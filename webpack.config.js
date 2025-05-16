@@ -1,5 +1,5 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
@@ -131,10 +131,10 @@ module.exports = {
       filename: 'webpack-stats.json'
     }),
 
-    // new HtmlWebpackPlugin({
-    //   template: 'src/public/index.html',
-    //   filename: "index.html"
-    // }),
+    new HtmlWebpackPlugin({
+      template: 'src/public/index.html',
+      filename: "index.html"
+    }),
     new webpack.SourceMapDevToolPlugin({
       test: /\.tsx?$/,
       filename: '[file].map.[query]',
