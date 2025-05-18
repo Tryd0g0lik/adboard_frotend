@@ -39,7 +39,7 @@ export const handlerRequestAddAd = async (event: MouseEvent): Promise<boolean | 
     const body = await response.json();
     // RESPONCE OF AD IS OK
     console.log(`RESPONCE OF AD IS OK: ${body}`);
-    return body as AdLine;
+    return body;
   } catch (error: ErrorEvent | unknown) {
     console.log(`AD REQUEST ERROR => ${error}`);
     return false;
