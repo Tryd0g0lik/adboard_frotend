@@ -5,7 +5,7 @@ import type { AdLine } from "src/interfaces";
  * @param event handler of clik by button of form. This form load the image to server.
  * @returns  AdLine or boolean
  */
-export const handlerRequestAddImage = async (event: MouseEvent): Promise<boolean | AdLine> => {
+export const handlerRequestAddImage = async (event: MouseEvent): Promise<boolean | { data: AdLine }> => {
   
   event.stopPropagation();
 

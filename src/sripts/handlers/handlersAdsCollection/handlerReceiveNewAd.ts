@@ -40,34 +40,43 @@ export async function handlerReceivesData(content: AdLine | AdLinesCollection | 
  * @param content AdLine's type. It is object (or json data) from server/api
   */
 function insertOneAd(instance: HTMLElement, content: AdLine): void{
-  // CREATE THE PARANT CONTEXT's BOX 
+  // CREATE THE PARENT CONTEXT's BOX 
   const newLineHtml = document.createElement('li');
-  (newLineHtml as HTMLElement).setAttribute('class', 'ad-view');
-  (newLineHtml as HTMLElement).setAttribute('data-ad', `${(content as AdLine).id}`);
-  // SET CLASS NAME FOR TITLE AD
+  newLineHtml.className = 'ad-view';
+  newLineHtml.dataset.ad = `${(content as AdLine).id}`;
+
+  // CREATE CONTENT CONTAINER
+  const viewContentHTml = document.createElement('div');
+  viewContentHTml.className = 'ad-view-content';
+
+  // CREATE TITLE
   const titleAdHtml = document.createElement('div');
-  (titleAdHtml as HTMLElement).setAttribute('class', 'ad-view-title');
-  (titleAdHtml as HTMLElement).innerHTML = `<h2>${(content as AdLine).title}</h2>`;
-  // SET CLASS NAME FOR CONTEXT AD
-  const contextAdHtml = titleAdHtml.cloneNode();
-  (contextAdHtml as HTMLElement).setAttribute('class', 'ad-view-context');
-  (contextAdHtml as HTMLElement).innerText = `${(content as AdLine).description}`;
-  // CREATE THE FOOTER BOX FOR INSERTING BUTTON 
-  const viewFooterHTml = titleAdHtml.cloneNode();
-  // (viewFooterHTml as HTMLElement).setAttribute('class', 'ad-view-footer');
-  (viewFooterHTml as HTMLElement).innerHTML = '<div class="ad-view-footer"><button type="submit" class= "ad-moving" > Перейти < /button></div >';
+  titleAdHtml.className = 'ad-view-title';
+  const titleHeading = document.createElement('h2');
+  titleHeading.textContent = (content as AdLine).title;
+  titleAdHtml.append(titleHeading);
 
-  // CREATE THE BOX FOR INSERTING THE 'titleAdHtml','contextAdHtml' and 'fotter Button'
-  const viewContentHTml = titleAdHtml.cloneNode();
-  (viewContentHTml as HTMLElement).setAttribute('class', 'ad-view-content');
+  // CREATE DESCRIPTION
+  const contextAdHtml = document.createElement('div');
+  contextAdHtml.className = 'ad-view-context';
+  contextAdHtml.textContent = (content as AdLine).description;
 
+  // CREATE FOOTER
+  const viewFooterHtml = document.createElement('div');
+  viewFooterHtml.className = 'ad-view-footer';
+  const button = document.createElement('button');
+  button.type = 'submit';
+  button.className = 'ad-moving btn btn-primary';
+  button.textContent = 'Перейти';
+  viewFooterHtml.append(button);
 
-  // CREATE HTML CONTENT FOR PUBLICATIO
-  (viewContentHTml as HTMLElement).insertAdjacentHTML('beforeend', (titleAdHtml as HTMLElement).innerHTML);
-  (viewContentHTml as HTMLElement).insertAdjacentHTML('beforeend', (contextAdHtml as HTMLElement).innerHTML);
-  (viewContentHTml as HTMLElement).insertAdjacentHTML('beforeend', (viewFooterHTml as HTMLElement).innerHTML);
+  // ASSEMBLE ALL PARTS
+  viewContentHTml.append(titleAdHtml);
+  viewContentHTml.append(contextAdHtml);
+  viewContentHTml.append(viewFooterHtml);
 
-  (newLineHtml as HTMLElement).insertAdjacentHTML('beforeend', (viewContentHTml as HTMLElement).innerHTML);
-  // PUBLICATION TO WEB PAGE 
-  instance.insertAdjacentHTML('beforeend', (newLineHtml as HTMLElement).innerHTML);
+  newLineHtml.append(viewContentHTml);
+
+  // PUBLICATION TO WEB PAGE
+  instance.append(newLineHtml);
 }

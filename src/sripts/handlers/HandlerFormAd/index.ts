@@ -26,8 +26,10 @@ export function formPage(): boolean {
       if ((typeof (dataBoolJson)).toLowerCase() === 'boolean') {
         return false;
       }
+      const dataJson = dataBoolJson as { "data": AdLine };
       // ONE AD  SEND TO PUBLIC IN WEB-PAGE
-      handlerReceivesData(dataBoolJson as unknown as AdLine);
+      handlerReceivesData(dataJson.data as unknown as AdLine);
+
       return true;
     }
   }

@@ -46,9 +46,11 @@ background: var(--bs-tertiary-bg);
 
 }
 
-a.page-link {
+.pagination {
+  a.page-link {
 border-color: var(--bs-border-color);
-
+background-color: var(--bs-light-bg-subtle);
+}
 }
 
 .ads-form {
@@ -62,6 +64,29 @@ display: block;
 
 }
 
+/* ---- PUBLICK COLLECTION ADS ----*/
+.ad-view {
+
+  .ad-view-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+  }
+
+  h2,
+  div.ad-view-context,
+  button {
+    font-size: 1rem;
+    color: var(--bs-body-color);
+  }
+
+  button {
+    max-height: 28px;
+    line-height: 1;
+    vertical-align: top;
+  }
+}
 :root,
 [data-bs-theme=dark] {
 color-scheme: dark;

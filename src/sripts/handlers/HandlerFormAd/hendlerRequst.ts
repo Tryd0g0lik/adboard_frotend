@@ -5,7 +5,7 @@ import { AdLine } from "src/interfaces";
  * @param event Mouse click.
  * @returns boolean or AdLine
  */
-export const handlerRequestAddAd = async (event: MouseEvent): Promise<boolean | AdLine> => {
+export const handlerRequestAddAd = async (event: MouseEvent): Promise<boolean | { data: AdLine }> => {
   const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
   event.stopPropagation();
 
