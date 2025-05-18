@@ -7,7 +7,10 @@
     src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <meta charset="UTF-8">
-  <meta name="viewpost" content="width-device-width, initial-scale=1">
+  <meta name="viewpost" content="width=device-width, initial-scale=1.0">
+  <meta content='true' name='HandheldFriendly' />
+  <meta content='width' name='MobileOptimized' />
+  <meta content='yes' name='apple-mobile-web-app-capable' />
   <link re="" l="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link
@@ -52,18 +55,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Ссылка</a>
               </li>
-              <!-- li class="nav-item dropdown">
-          https://bootstrap-4.ru/docs/5.3/components/navbar/
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Выпадающий список
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Действие</a></li>
-              <li><a class="dropdown-item" href="#">Другое действие</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
-            </ul>
-          </li -->
+          
 
             </ul>
             <form class="d-flex" role="search">
@@ -77,119 +69,87 @@
 
 
   </header>
+  <section class="comments" id="comments">
+    <div class="comments-list"></div>
+  </section>
   <section class="form">
     <div class="mb-3">
       <div class="row">
-        <h3>Изображение</h3>
+        <h3>Объявление</h3>
       </div>
       <form class="ads-form row g-3 needs-validation">
         <input type="hidden" name="csrfmiddlewaretoken"
-          value="oxlP3r45yvXRCbFtAKTEYI7REIJRlPIG4d47de8TZxorLVysKOfkOTW7QWzj7sC7" wfd-id="id3">
-    
+          value="CfWS46hWzOB7knEXCnXzOyVf6NZB1wluiVFaeTlK0Q2Ht7xWMrjfEJKvi1P3N9fV" wfd-id="id1">
+  
         <div class="mb-3">
-    
-    
-          <input type="file" name="file_path" class="form-control" id="validationServer02" wfd-id="id4">
-    
-        </div>
-    
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      </div>
-    <!-- <div class="mb-3">
-      <form class="ads-form row g-3 needs-validation" >
-        <input type="hidden" name="csrfmiddlewaretoken"
-          value="trkjHP6fQfQgmpvbkFa4bP2kEudwFinM973BRCa3hhhQv9oauJwK10RAQI3YrVhd" wfd-id="id1"
-          wfd-value="dHJrakhQNmZRZlFnbXB2YmtGYTRiUDJrRXVkd0Zpbk05NzNCUkNhM2hoaFF2OW9hdUp3SzEwUkFRSTNZclZoZA==">
-
-        <div class="mb-3">
-
-
-
-
+  
           <input type="text" name="title" placeholder="Enter the title is-valid" id="validationServer01" maxlength="100"
-            required="" wfd-id="id2" wfd-value="TGV0cyBNYWtlIFNvbWV0aGluZyBHcmVhdA==">
-
+            required="" wfd-id="id2">
+  
         </div>
-
+  
         <div class="mb-3">
-
-
-
-
+  
           <textarea name="description" cols="40" rows="10" class="form-control ad-full__description is-valid"
             maxlength="1000" required="" id="id_description"></textarea>
-
+  
         </div>
-
+  
         <div class="mb-3">
-
-
-
-
+  
           <select name="category" class="form-select" id="id_category">
-            <option value="NEW">Новое</option>
-
-            <option value="USED">Использованное</option>
-
             <option value="UNKNOWN">Неизвестно</option>
-
+            <option value="NEW">Новое</option>
+  
+            <option value="USED">Использованное</option>
+  
           </select>
-
+  
         </div>
-
+  
         <div class="mb-3">
-
-
-
-
-          <input type="file" name="files" class="form-control" id="validationServer02" wfd-id="id3">
-
+  
+          <select name="condition" class="form-select" id="id_condition">
+            <option value="DEACTIVATED">Не опубликовано</option>
+          
+            <option value="ACTIVATED">Опубликовано</option>
+          
+          </select>
         </div>
-
+  
         <div class="mb-3">
-
-
-
-
+  
           <select name="path" class="form-select is-valid" id="id_path">
-            <option value="Спорт">Спорт</option>
-
-            <option value="Техника">Техника</option>
-
-            <option value="Дом и сад">Дом и сад</option>
-
-            <option value="Одежда и обувь">Одежда и обувь</option>
-
-            <option value="Книги">Книги</option>
-
-            <option value="Авто">Авто</option>
-
+            <option value="categories/sport/index.html">Спорт</option>
+            <option value="categories/tech/index.html">Техника</option>
+            <option value="categories/home/index.html">Дом и сад</option>
+            <option value="categories/clothes/index.html">Одежда и обувь</option>
+            <option value="categories/books/index.html">Книги</option>
+            <option value="categories/cars/index.html">Авто</option>
           </select>
-
+  
         </div>
-
+  
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-    </div> -->
+    </div>
     <div class="mb-3">
-      <div class="row">
+      <div class="row ">
         <h3>Изображение</h3>
       </div>
       <form class="ads-form ads-form__full-image-file row g-3 needs-validation">
         <input type="hidden" name="csrfmiddlewaretoken"
-          value="oxlP3r45yvXRCbFtAKTEYI7REIJRlPIG4d47de8TZxorLVysKOfkOTW7QWzj7sC7" wfd-id="id3">
-    
+          value="CfWS46hWzOB7knEXCnXzOyVf6NZB1wluiVFaeTlK0Q2Ht7xWMrjfEJKvi1P3N9fV" wfd-id="id3">
+  
         <div class="mb-3">
-    
-    
+  
           <input type="file" name="file_path" class="form-control" id="validationServer02" wfd-id="id4">
-    
+  
         </div>
-    
+  
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-      </div>
+    </div>
     <div class="pagination">
       <!-- https://bootstrap-4.ru/docs/5.3/components/pagination/ -->
       <nav aria-label="Пример навигации по страницам">
@@ -202,7 +162,13 @@
         </ul>
       </nav>
     </div>
-  </section>
+    </section>
+    <!-- ВСТАВИТЬ В ШАБЛОНЫ BSACK -->
+    <section class=" ads-collections" id="ads-collections">
+      <div class="ads-collections-list">
+        <ul class="ads-views"></ul>
+      </div>
+    </section>
 
 </body>
 </html>

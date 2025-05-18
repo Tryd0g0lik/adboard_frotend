@@ -1,5 +1,11 @@
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
-export const handlerSendImage = async (event: MouseEvent): Promise<boolean> =>{
+import type { AdLine } from "src/interfaces";
+/**
+ * This handler of post request for add only one an image to server.
+ * @param event handler of clik by button of form. This form load the image to server.
+ * @returns  AdLine or boolean
+ */
+export const handlerRequestAddImage = async (event: MouseEvent): Promise<boolean | AdLine> => {
   
   event.stopPropagation();
 
@@ -14,7 +20,7 @@ export const handlerSendImage = async (event: MouseEvent): Promise<boolean> =>{
     return false;
   }
   const dataF0rm = new FormData(currenttarget as HTMLFormElement);
-
+  // REQUEST TO SERVER AND SEND FILE IMAGE
   try {
     const response = await fetch(`${URL_HOST_FOR_API}/api/v1/image/`,
       {
@@ -25,12 +31,13 @@ export const handlerSendImage = async (event: MouseEvent): Promise<boolean> =>{
     if (!response.ok) {
       return false;
     }
+    // RESPONCE IS OK
     const body = await response.json();
     console.log(`SERVER: ${body}`);
+    return body;
 
   } catch (error: ErrorEvent | unknown) {
     console.log(`Request of FIleImage to server Error => ${error}`);
     return false;
   }
-  return true;
 }

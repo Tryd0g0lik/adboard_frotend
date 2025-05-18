@@ -1,57 +1,50 @@
-import { handlerSendImage } from "src/sripts/handlers/HandlerFormImg";
+import { handlerRequestAddImage } from "src/sripts/handlers/HandlerFormImg";
+import type { AdLine } from "src/interfaces";
+import { handlerReceivesData } from "../handlersAdsCollection/handlerReceiveNewAd";
+import { handlerRequestAddAd } from "./hendlerRequst";
 
-const handlerForm = async (event: MouseEvent): Promise<boolean> => {
-  const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
-  event.stopPropagation();
 
-  // GET SUBMIT HTML
-  if (event.target && (event.target as HTMLElement).tagName.toLowerCase() !== "button") {
-    return false;
-  }
-  event.preventDefault();
-  // GET FORM HTML
-  const currenttarget = event.currentTarget;
-  if (currenttarget && (currenttarget as HTMLFormElement).tagName.toLowerCase() !== "form") {
-    return false;
-  }
-  const dataF0rm = new FormData(currenttarget as HTMLFormElement);
- 
-  try {
-    const response = await fetch(`${URL_HOST_FOR_API}/api/v1/ads/`,
-      {
-        method: "POST",
-        body: dataF0rm
-      }
-    );
-    if (!response.ok) {
-      return false;
-    }
-    const body = await response.json();
-    console.log(`SERVER: ${body}`);
 
-  } catch (error: ErrorEvent | unknown) {
-    console.log(`Request to server Error => ${error}`);
-    return false;
-  }
-  return true;
-};
-
+/**
+ * This function for add the two listens to the form, the first is for send ads to server, and the second is for send image file to server.
+ * @returns boolean.
+ */
 export function formPage(): boolean {
+  // ADS FORM
   const formHTML = document.querySelector(".form form") as HTMLFormElement;
+  // IMAGE FILE FORM
   const formImageFileHTML = document.querySelector(".form form.ads-form__full-image-file") as HTMLFormElement;
   if (!formHTML) {
     console.log("Somewing that frong! Invalid form.")
     return false;
   } else{
+
     const formHTMLCopy = (formHTML as HTMLFormElement);
-    formHTMLCopy.onclick = handlerForm
+    // ----- EVENT ONCLICK FOR ADS -----
+    formHTMLCopy.onclick = async (e: MouseEvent): Promise<boolean> => {
+      const dataBoolJson = await handlerRequestAddAd(e);
+      if ((typeof (dataBoolJson)).toLowerCase() === 'boolean') {
+        return false;
+      }
+      // ONE AD  SEND TO PUBLIC IN WEB-PAGE
+      handlerReceivesData(dataBoolJson as unknown as AdLine);
+      return true;
+    }
   }
   if (!formImageFileHTML) {
     console.log("Somewing that frong! Invalid form.")
     return false;
   } else{
     const formHTMLCopy = (formImageFileHTML as HTMLFormElement);
-    formHTMLCopy.onclick = handlerSendImage
+    //----- EVENT ONCLICK FOR IMAGE -----
+    formHTMLCopy.onclick = async (e: MouseEvent): Promise<boolean> => {
+      const responce = await handlerRequestAddImage(e);
+      if (!responce) {
+        console.log("RESPONSE OF SEND IMAGE IS NOT OK");
+        return false;
+      }
+      return true;
+    }
   }
   
   return true;
