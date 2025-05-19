@@ -1,3 +1,6 @@
+/**
+ * src\sripts\handlers\HandlerFormAd\hendlerRequst.ts
+ */
 import { AdLine } from "src/interfaces";
 
 /**
@@ -25,7 +28,7 @@ export const handlerRequestAddAd = async (event: MouseEvent): Promise<boolean | 
 
   try {
     // REQUEST TO SERVER AND SEND AD's DATA OF FORM
-    console.log(" REQUEST TO SERVER AND SEND AD's DATA OF FORM;")
+    console.log(" REQUEST TO SERVER AND SEND AD's DATA OF FORM;");
     const response = await fetch(`${URL_HOST_FOR_API}/api/v1/ads/`,
       {
         method: "POST",
@@ -36,7 +39,7 @@ export const handlerRequestAddAd = async (event: MouseEvent): Promise<boolean | 
       console.log("RESPONSE OF AD NOT Ok");
       return false;
     }
-    const body = await response.json();
+    const body = await response.json() as { data: AdLine };
     // RESPONCE OF AD IS OK
     console.log(`RESPONCE OF AD IS OK: ${body}`);
     return body;

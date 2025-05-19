@@ -1,3 +1,6 @@
+/**
+ * src\sripts\handlers\HandlerFormImg\index.ts
+ */
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
 import type { AdLine } from "src/interfaces";
 /**
@@ -32,7 +35,7 @@ export const handlerRequestAddImage = async (event: MouseEvent): Promise<boolean
       return false;
     }
     // RESPONCE IS OK
-    const body = await response.json();
+    const body = await response.json() as { data: AdLine };
     console.log(`SERVER: ${body}`);
     return body;
 
@@ -40,4 +43,4 @@ export const handlerRequestAddImage = async (event: MouseEvent): Promise<boolean
     console.log(`Request of FIleImage to server Error => ${error}`);
     return false;
   }
-}
+};

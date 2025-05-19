@@ -28,12 +28,12 @@ module.exports = {
     parser: TypescriptEslintParser, // Парсер для TypeScript
     parserOptions: {
       project: ['./tsconfig.json'],
-      ecmaVersion: 2022, //'latest',
+      ecmaVersion: 2018, //'latest',
       sourceType: 'module',
       tsconfigRootDir: __dirname,
       ecmaFeatures: {
-        jsx: true,
-        tsx: true,
+        ts: true,
+        js: true,
       },
     },
   },
@@ -125,7 +125,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': ['error', { fixToUnknown: false, ignoreRestArgs: true }],
     '@typescript-eslint/no-var-requires': 'error',
 
-
+    "@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"],
 
     '@typescript-eslint/await-thenable': 'error',
 
@@ -148,15 +148,17 @@ module.exports = {
   '@typescript-eslint/prefer-nullish-coalescing': 'off', //["error", { ignoreTernaryTests: true }]
 },
   ignores: [
-  "webpack.config.js",
-  "postcss.config.js",
-  "/*eslintrc.js",
-  "/src/index.ts",
-  "babel.config.js",
-  "dist/",
-  "src/**/interfaces.ts",
-  "src/index.ts",
+    "webpack.config.js",
+    "postcss.config.js",
+    "/*eslintrc.js",
+    "/src/index.ts",
+    "babel.config.js",
+    "dist/",
+    "src/**/interfaces.ts",
+    "src/index.ts",
     "src/frontend/index.*",
-    "*.js"
-],
+    "*.js",
+    "src/interfaces.ts",
+    "**/interfaces.ts"
+  ],
 };

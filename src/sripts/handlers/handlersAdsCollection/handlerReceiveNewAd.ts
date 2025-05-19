@@ -2,44 +2,13 @@
  * src\sripts\handlers\handlersAdsCollection\handlerReceiveNewAd.ts
  */
 import type { AdLine, AdLinesCollection } from "src/interfaces";
-
-
-
-/**
- * This handler for publicate the one new ad or list of ads's collection in web-page.
- * @param content Adline's or AdLinesCollection data type. Default value is undefined.
- * @returns Promise boolean
- */
-export async function handlerReceivesData(content: AdLine | AdLinesCollection | undefined  = undefined): Promise<boolean>{
-  if (!content) {
-    /**
-     * Дополнителььная функция request для запроса get получить  список ads
-     */
-    null
-    return true
-  }
-  const collectionsHTML = document.querySelector("#ads-collections ul.ads-views") as HTMLElement;
-  
-  if (!collectionsHTML) {
-    console.log("INVALID 'ads-collections'");
-    false;
-  } else{
-    // RECEIVING HTML CONTENT FROM SERVER's/API's DATA
-    insertOneAd(collectionsHTML, content as AdLine);
-  }
-  
-  
-  
-  // ulHtml
-  return true
-};
-
 /**
  * 
  * @param instance HTMLElement This is main BOX for inserting by one line of ads
  * @param content AdLine's type. It is object (or json data) from server/api
   */
-function insertOneAd(instance: HTMLElement, content: AdLine): void{
+
+function insertOneAd(instance: HTMLElement, content: AdLine): void {
   // CREATE THE PARENT CONTEXT's BOX 
   const newLineHtml = document.createElement('li');
   newLineHtml.className = 'ad-view';
@@ -80,3 +49,30 @@ function insertOneAd(instance: HTMLElement, content: AdLine): void{
   // PUBLICATION TO WEB PAGE
   instance.append(newLineHtml);
 }
+
+/**
+ * This handler for publicate the one new ad or list of ads's collection in web-page.
+ * @param content Adline's or AdLinesCollection data type. Default value is undefined.
+ * @returns Promise boolean
+ */
+export async function handlerReceivesData(content: AdLine | AdLinesCollection | undefined = undefined): Promise<boolean> {
+  if (!content) {
+    /**
+     * Дополнителььная функция request для запроса get получить  список ads
+     */
+    null;
+    return true;
+  }
+  const collectionsHTML = document.querySelector("#ads-collections ul.ads-views") as HTMLElement;
+
+  if (!collectionsHTML) {
+    console.log("INVALID 'ads-collections'");
+    false;
+  } else {
+    // RECEIVING HTML CONTENT FROM SERVER's/API's DATA
+    insertOneAd(collectionsHTML, content as AdLine);
+  }
+  // ulHtml
+  return true;
+};
+

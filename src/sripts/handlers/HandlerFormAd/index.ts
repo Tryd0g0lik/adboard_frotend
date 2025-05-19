@@ -1,9 +1,10 @@
+/**
+ * src\sripts\handlers\HandlerFormAd\index.ts
+ */
 import { handlerRequestAddImage } from "src/sripts/handlers/HandlerFormImg";
 import type { AdLine } from "src/interfaces";
 import { handlerReceivesData } from "../handlersAdsCollection/handlerReceiveNewAd";
 import { handlerRequestAddAd } from "./hendlerRequst";
-
-
 
 /**
  * This function for add the two listens to the form, the first is for send ads to server, and the second is for send image file to server.
@@ -15,7 +16,7 @@ export function formPage(): boolean {
   // IMAGE FILE FORM
   const formImageFileHTML = document.querySelector(".form form.ads-form__full-image-file") as HTMLFormElement;
   if (!formHTML) {
-    console.log("Somewing that frong! Invalid form.")
+    console.log("Somewing that frong! Invalid form.");
     return false;
   } else{
 
@@ -29,12 +30,11 @@ export function formPage(): boolean {
       const dataJson = dataBoolJson as { "data": AdLine };
       // ONE AD  SEND TO PUBLIC IN WEB-PAGE
       handlerReceivesData(dataJson.data as unknown as AdLine);
-
       return true;
-    }
+    };
   }
   if (!formImageFileHTML) {
-    console.log("Somewing that frong! Invalid form.")
+    console.log("Somewing that frong! Invalid form.");
     return false;
   } else{
     const formHTMLCopy = (formImageFileHTML as HTMLFormElement);
@@ -46,7 +46,7 @@ export function formPage(): boolean {
         return false;
       }
       return true;
-    }
+    };
   }
   
   return true;
