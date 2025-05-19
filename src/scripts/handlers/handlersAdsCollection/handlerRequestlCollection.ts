@@ -8,7 +8,7 @@ import type { AdLinesCollection } from "src/interfaces";
  * This function is download the collection of the ads from server.
  * @returns {data: AdLinesCollection} | void
  */
-export async function handlerGetAdsCollection(): Promise<{ data: AdLinesCollection }| void> { 
+export async function asyncHandlerGetAdsCollection(): Promise<{ data: AdLinesCollection } | void> { 
   try{
     // REQUEST GET COLLECTION ADS
     const url = new URL(`${URL_HOST_FOR_API}/api/v1/ads`);

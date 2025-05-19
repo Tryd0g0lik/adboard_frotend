@@ -1,13 +1,15 @@
 import { formPage } from "./handlers/HandlerFormAd";
-import publicAllAd from "src/scripts/services/taskPublicAllAd";
+import asyncPublicAllAd from "src/scripts/services/taskPublicAllAd";
+import { asyncGetListenerEvent, asyncHandlerOneAdPublic } from "src/scripts/handlers/handlerSingleAd/handleRequsetReceiveAd";
 // LISTENER CLICK BY FORM's SUBMIT BUTTOM
 document.removeEventListener("DOMContentLoaded", () => {
    formPage();
   // publicAllAd - public all ads in HTML
-  Promise.allSettled([publicAllAd()]);
+  Promise.all([asyncPublicAllAd()]);
    });
 document.addEventListener("DOMContentLoaded", () => {
    formPage();
   // publicAllAd - public all ads in HTML
-  Promise.allSettled([publicAllAd()]);
+  const idName = 'data-ad';
+  Promise.all([asyncPublicAllAd(), asyncGetListenerEvent(asyncHandlerOneAdPublic, idName)]);
    });

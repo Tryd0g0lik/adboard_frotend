@@ -20,7 +20,7 @@
   "scripts": {
     "lint": "eslint src --ext jsx,ts,tsx",
     "cssstyle": "npx @tailwindcss/cli -i ./src/styles/style.css -o ./src/output.css --watch",
-    "build": "webpack --mode=production --config webpack.config.js",
+    "build": "webpack --mode=development --config webpack.config.js",
     "build:dev": "webpack --mode=development --config webpack.dev.config.js",
     "server": "webpack server --mode=development  --config webpack.config.js",
     "prepare": "husky"
