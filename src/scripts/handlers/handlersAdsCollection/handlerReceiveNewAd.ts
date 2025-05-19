@@ -70,7 +70,13 @@ export async function handlerReceivesData(content: AdLine | AdLinesCollection | 
     false;
   } else {
     // RECEIVING HTML CONTENT FROM SERVER's/API's DATA
-    insertOneAd(collectionsHTML, content as AdLine);
+    if (!Array.isArray(content)) {
+      insertOneAd(collectionsHTML, content as AdLine);
+    } else (
+      content.forEach((item) => {
+        insertOneAd(collectionsHTML, item as AdLine);
+      })
+    );
   }
   // ulHtml
   return true;

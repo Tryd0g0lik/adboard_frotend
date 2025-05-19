@@ -1,13 +1,13 @@
 // https://www.typescriptlang.org/tsconfig
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+    // "jsx": "react-jsx",
     "noImplicitAny": true,
     "module": "commonjs", //"ES6",
     "target": "ES2022",
-    // "rootDirs": [
-    //   "./src"
-    // ],
+    "rootDirs": [
+      "."
+    ],
 
     "allowSyntheticDefaultImports": true,
     "allowJs": true,

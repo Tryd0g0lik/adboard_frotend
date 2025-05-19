@@ -38,11 +38,20 @@ export const handlerRequestAddAd = async (event: MouseEvent): Promise<boolean | 
     if (!response.ok) {
       console.log("RESPONSE OF AD NOT Ok");
       return false;
-    }
-    const body = await response.json() as { data: AdLine };
+    } 
+    // CLEANING THE BODY OF FORM HTML
+    (currenttarget as HTMLElement).querySelectorAll("input").forEach((input: HTMLElement) => {
+      (input as HTMLInputElement).value = "";
+    });
+    (currenttarget as HTMLElement).querySelectorAll("textarea").forEach((textarea: HTMLElement) => {
+      (textarea as HTMLInputElement).value = "";
+    });
+    //  GET JSON DATA
+    const body = await response.json() as string;
     // RESPONCE OF AD IS OK
     console.log(`RESPONCE OF AD IS OK: ${body}`);
-    return body;
+    const data = JSON.parse(body) as { data: AdLine };
+    return data;
   } catch (error: ErrorEvent | unknown) {
     console.log(`AD REQUEST ERROR => ${error}`);
     return false;

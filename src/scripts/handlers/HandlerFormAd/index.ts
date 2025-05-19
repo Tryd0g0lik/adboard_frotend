@@ -1,7 +1,7 @@
 /**
  * src\sripts\handlers\HandlerFormAd\index.ts
  */
-import { handlerRequestAddImage } from "src/sripts/handlers/HandlerFormImg";
+import { handlerRequestAddImage } from "src/scripts/handlers/HandlerFormImg";
 import type { AdLine } from "src/interfaces";
 import { handlerReceivesData } from "../handlersAdsCollection/handlerReceiveNewAd";
 import { handlerRequestAddAd } from "./hendlerRequst";
