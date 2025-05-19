@@ -101,8 +101,28 @@ div.hidden {
     line-height: 1;
     vertical-align: top;
   }
+    div.ad-view-context{
+    height: clamp(100px, 47vh, 500px);
+    overflow: hidden;
+    }
 }
 
+/* ---- PAGE OF ONE AD ----*/
+#ad-page-container {
+  .ad-view-content {
+    flex-wrap: wrap;
+  }
+
+  .ad-view-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: clamp(18px, 2rem, 2.5rem);
+  }
+}
 :root,
 [data-bs-theme=dark] {
   color-scheme: dark;

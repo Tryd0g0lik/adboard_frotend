@@ -4,13 +4,13 @@
 import type { AdLine } from "src/interfaces";
 
 /**
- *
+ * @param: pathname string. This is the path of api.  Exemple - '/api/ad/one/'.
  * @param index type stryng. This is the indes of the ad. It is an one data line from server.
  * @returns json data (`{ data: AdLine[] `)
  */
-export async function asyncHandlerRequestGetOneAd(index: string): Promise<{ data: AdLine[] } | void> {
+export async function asyncHandlerRequestGetOneAd(pathname: string, index: string): Promise<{ data: AdLine[] } | void> {
   try {
-    const response = await fetch(`/api/ad/one/${index}`, {
+    const response = await fetch(`${pathname}${index}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     });
