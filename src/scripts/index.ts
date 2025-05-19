@@ -10,6 +10,6 @@ document.removeEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
    formPage();
   // publicAllAd - public all ads in HTML
-  const idName = 'data-ad';
-  Promise.all([asyncPublicAllAd(), asyncGetListenerEvent(asyncHandlerOneAdPublic, idName)]);
+  const idName = 'ads-collections';
+  Promise.all([asyncPublicAllAd(), asyncGetListenerEvent(asyncHandlerOneAdPublic, undefined, idName)]);
    });

@@ -3,6 +3,8 @@
  */
 import type { AdLine } from "src/interfaces";
 import teskInsertOneAd from "src/scripts/services/taskCreateOneElement";
+const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
+
 
 async function asyncHandlerRequestGetOneAd(index: string): Promise<{ data: AdLine } | void> {
   try{
@@ -27,7 +29,7 @@ function handlerSubmitGetIdFroHTML(event: MouseEvent): string|  void{
   if (!(event.target instanceof HTMLElement)) {
     return;
   }
-  if((event.target as HTMLElement).tagName.toLowerCase() !== "submit"){
+  if ((event.target as HTMLElement).tagName.toLowerCase() !== "button") {
     return;
   }
   event.stopPropagation();
@@ -48,6 +50,8 @@ function handlerSubmitGetIdFroHTML(event: MouseEvent): string|  void{
 }
 
 /**
+ * This function is called when you click on the button 'submit' and get the index of the Ad.\
+ * Then, relocation to the page of the public Ad (http://< HOST >/ad/id/) .
  * @param event of click.
  * @returns  Promise<void>
  */
@@ -58,17 +62,18 @@ export async function asyncHandlerOneAdPublic(event: MouseEvent): Promise<void>{
     console.warn("The index's data of Ad is invalid!");
     return;
   }
+  window.location.href = `${URL_HOST_FOR_API}/ad/${data}/`;
   // GET DATA OF AD FROM THE SERVER
-  const response = await asyncHandlerRequestGetOneAd(data);
-  if (!response){
-    console.error("The received data from server is invalid!");
-  }
-  const sectionHtml = document.getElementById("ad-page");
-  if (!sectionHtml){
-    console.error("The section HTML is invalid!");
-  }
-  // PUBLIC AD ON AD PAGE
-  teskInsertOneAd((sectionHtml as HTMLElement), (response as { data: AdLine}).data);
+  // const response = await asyncHandlerRequestGetOneAd(data);
+  // if (!response){
+  //   console.error("The received data from server is invalid!");
+  // }
+  // const sectionHtml = document.getElementById("ad-page");
+  // if (!sectionHtml){
+  //   console.error("The section HTML is invalid!");
+  // }
+  // // PUBLIC AD ON AD PAGE
+  // teskInsertOneAd((sectionHtml as HTMLElement), (response as { data: AdLine}).data);
 }
 
 /**
