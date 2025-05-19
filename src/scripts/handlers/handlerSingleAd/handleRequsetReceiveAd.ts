@@ -1,29 +1,8 @@
 /**
  * src\scripts\handlers\handlerSingleAd\handleRequsetReceiveAd.ts
  */
-import type { AdLine } from "src/interfaces";
-import teskInsertOneAd from "src/scripts/services/taskCreateOneElement";
+
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
-
-
-async function asyncHandlerRequestGetOneAd(index: string): Promise<{ data: AdLine } | void> {
-  try{
-    const response = await fetch(`/api/ad/one/${index}`, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    if (!response.ok){
-      console.error(`The 'error' of GET: ${response.statusText}`);
-      return;
-    }
-    const data = await response.json() as string;
-    const dataJson = JSON.parse(data) as { data: AdLine };
-    return dataJson;
-  } catch (err){
-    console.error(new Error("The 'index' ERROR: " + err));
-  }
-  return;
-} 
 
 function handlerSubmitGetIdFroHTML(event: MouseEvent): string|  void{
   if (!(event.target instanceof HTMLElement)) {
@@ -63,17 +42,7 @@ export async function asyncHandlerOneAdPublic(event: MouseEvent): Promise<void>{
     return;
   }
   window.location.href = `${URL_HOST_FOR_API}/ad/${data}/`;
-  // GET DATA OF AD FROM THE SERVER
-  // const response = await asyncHandlerRequestGetOneAd(data);
-  // if (!response){
-  //   console.error("The received data from server is invalid!");
-  // }
-  // const sectionHtml = document.getElementById("ad-page");
-  // if (!sectionHtml){
-  //   console.error("The section HTML is invalid!");
-  // }
-  // // PUBLIC AD ON AD PAGE
-  // teskInsertOneAd((sectionHtml as HTMLElement), (response as { data: AdLine}).data);
+
 }
 
 /**
