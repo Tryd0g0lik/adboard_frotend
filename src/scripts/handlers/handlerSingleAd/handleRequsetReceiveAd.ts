@@ -54,16 +54,16 @@ export async function asyncHandlerOneAdPublic(event: MouseEvent): Promise<void>{
  * @param idName : string. Default value undefined.
  * @returns void.
  */
-export async function asyncGetListenerEvent(instanse: CallableFunction, 
+export async function asyncGetListenerEvent(eventNMame: string, instanse: CallableFunction, 
   className: undefined|string = undefined,
    idName: undefined |string = undefined): Promise<void>{
     if (!className && idName){
-      document.getElementById(idName)?.removeEventListener("click", instanse as EventListener);
-      document.getElementById(idName)?.addEventListener("click", instanse as EventListener);
+      document.getElementById(idName)?.removeEventListener(eventNMame, instanse as EventListener);
+      document.getElementById(idName)?.addEventListener(eventNMame, instanse as EventListener);
       return;
     } else if (className && !idName){
-      (document.getElementsByClassName(className)[0] as HTMLElement).removeEventListener("click", instanse as EventListener);
-      (document.getElementsByClassName(className)[0] as HTMLElement).addEventListener("click", instanse as EventListener);
+      (document.getElementsByClassName(className)[0] as HTMLElement).removeEventListener(eventNMame, instanse as EventListener);
+      (document.getElementsByClassName(className)[0] as HTMLElement).addEventListener(eventNMame, instanse as EventListener);
       return;
     }
     return;
