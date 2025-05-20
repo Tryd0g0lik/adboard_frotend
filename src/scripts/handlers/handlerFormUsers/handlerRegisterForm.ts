@@ -14,7 +14,7 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   const pathname = location.pathname;
   // GET DATA FROM FORM
   const body_ = {} as {[key: string]: string| FormData};
-  body_.method = "GET";
+  // body_.method = "GET";
   const currentTarget = event.currentTarget as HTMLElement;
   const formHtml = currentTarget.querySelector("form") as HTMLElement;
   const form = new FormData(formHtml as HTMLFormElement);
@@ -24,12 +24,12 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   event.stopPropagation();
 
   // SEND DATA TO API
-  if (pathname.includes("register")) {
-    body_.method = "POST";
-    body_.body = form as FormData;
-  }
+  body_.method = "POST";
+  body_.body = form as FormData;
+  // LOGIN OR REGISTER USER
+  const pathnemr = (pathname.includes("login")) ? '/api/v2/users/login_user/' : "/api/v2/users/";
   // REGISTER USER
-  const url = new URL('/api/v2/users/', URL_HOST_FOR_API);
+  const url = new URL(pathnemr, URL_HOST_FOR_API);
   try {
     const response = await fetch(url, body_);
     if (!response.ok || response.status > 201) {
