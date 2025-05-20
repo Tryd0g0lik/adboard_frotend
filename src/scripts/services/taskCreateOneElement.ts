@@ -16,8 +16,7 @@ const teskInsertOneAd = (instance: HTMLElement, content: AdLine): void => {
 
   // CREATE CONTENT CONTAINER
   const viewContentHTml = document.createElement('div');
-  viewContentHTml.className = 'ad-view-content';
-
+  viewContentHTml.className = 'ad-view-container';
   // CREATE TITLE
   const titleAdHtml = document.createElement('div');
   titleAdHtml.className = 'ad-view-title';
@@ -27,7 +26,7 @@ const teskInsertOneAd = (instance: HTMLElement, content: AdLine): void => {
 
   // CREATE DESCRIPTION
   const contextAdHtml = document.createElement('div');
-  contextAdHtml.className = 'ad-view-context';
+  contextAdHtml.className = 'ad-view-content';
   contextAdHtml.textContent = (content as AdLine).description;
 
   // CREATE FOOTER

@@ -81,16 +81,23 @@ div.hidden {
 
 /* ---- PUBLICK COLLECTION ADS ----*/
 .ad-view {
-
-  .ad-view-content {
+  div.ad-view {
+      overflow: hidden;
+      text-align: left;
+    }
+  .ad-view-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-
-  }
+    max-height: 34px;
+    
+    >div {
+        overflow: hidden;
+      }
+}
 
   h2,
-  div.ad-view-context,
+  div.ad-view-content,
   button {
     font-size: 1rem;
     color: var(--bs-body-color);
@@ -101,24 +108,37 @@ div.hidden {
     line-height: 1;
     vertical-align: top;
   }
-    div.ad-view-context{
-    height: clamp(100px, 47vh, 500px);
-    overflow: hidden;
-    }
+    
 }
+
 
 /* ---- PAGE OF ONE AD ----*/
 #ad-page-container {
-  .ad-view-content {
-    flex-wrap: wrap;
-  }
+  height: clamp(100px, 47vh, 500px);
+  
+    
+      // width: clamp(250px, 280px, 660px);
+    
 
-  .ad-view-title {
-    display: block;
-    width: 100%;
-    text-align: center;
-  }
-
+  
+  
+    .ad-view-title{
+      text-align: center;
+    }
+    .ad-view-container{
+      max-height: none;
+      flex-wrap: wrap;
+      >.ad-view-content {
+          text-align: left; 
+          max-height: none;
+      }
+      >div {
+        display: block;
+        min-width: 280px;
+      width: 100%;   
+      }
+    }
+    
   h2 {
     font-size: clamp(18px, 2rem, 2.5rem);
   }
