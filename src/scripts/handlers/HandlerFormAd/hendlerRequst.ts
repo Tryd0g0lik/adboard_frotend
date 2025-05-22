@@ -11,18 +11,8 @@ import { AdLine } from "src/interfaces";
 export const asyncHandlerRequestAddAd = async (event: MouseEvent): Promise<boolean | { data: AdLine }> => {
   const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
   event.stopPropagation();
-
-  // GET SUBMIT HTML
-  if (event.target && (event.target as HTMLElement).tagName.toLowerCase() !== "button") {
-    return false;
-  }
-  console.log("START FORM's HANDLER OF AD");
-  event.preventDefault();
   // GET FORM HTML FOR AD
-  const currenttarget = event.currentTarget;
-  if (currenttarget && (currenttarget as HTMLFormElement).tagName.toLowerCase() !== "form") {
-    return false;
-  }
+  const currenttarget = event.currentTarget; 
   // GET DATA OF FORM
   const dataF0rm = new FormData(currenttarget as HTMLFormElement);
 

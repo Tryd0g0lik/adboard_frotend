@@ -54,7 +54,9 @@ input[type="file"] {
 }
 
 
-
+.invalid {
+  color: var(--bs-danger-text-emphasis);
+}
 div.hidden {
   display: block;
 
