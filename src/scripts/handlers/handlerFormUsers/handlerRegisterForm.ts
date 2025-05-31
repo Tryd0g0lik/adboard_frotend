@@ -1,3 +1,7 @@
+/**
+ * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
+ */
+import { setSessionIdInCookie } from "src/scripts/services/cookies/setCookies";
 import getErrorContent from "src/scripts/services/taskGetErrorContent";
 import { validateMaxLength, validateMinLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
@@ -6,7 +10,6 @@ import { validateRegex } from "src/scripts/validators/validateRegex";
  * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
  */
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
-
 
 /***
  * Function that handle user's forms. It is the registration form and login form.
@@ -95,9 +98,11 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   }
 
   // LOGIN OR REGISTER USER
-  const pathnemr = (pathname.includes("login")) ? '/api/v2/users/login_user/' : "/api/v2/users/";
+  // const pathnemr = (pathname.includes("login")) ? '/api/v2/users/login_user/' : "/api/v2/users/";
   // REGISTER USER
-  const url = new URL(pathnemr, URL_HOST_FOR_API);
+  const templeteApi = (pathname.includes("login")) ? "/api/v1/users/index/0/login_user/" : '/api/v1/users/index/';
+  // REGISTER USER
+  const url = new URL(templeteApi, URL_HOST_FOR_API);
   try {
     const response = await fetch(url, body_);
     if (!response.ok || response.status > 201) {
@@ -107,13 +112,25 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     const data = await response.json();
     // CHANGE LOCATION
     if (pathname.includes("register")) {
-      setTimeout(() => window.location.pathname = "/users/login/", 200);
+      setTimeout(() => window.location.pathname = "/login/", 200);
     } else {
-      // const cookieName = 'sessionId';
-      // const cookieValue = sessionId;
-      // const maxAge = 60 * 60 * 24; // Время жизни cookie в секундах (например, 1 день)
-
-      // document.cookie = `${cookieName}=${cookieValue}; max-age=${maxAge}; path=/; secure; samesite=strict`;
+      Array.from(
+        data["data"] as Record<string, string | number>[]
+      ).forEach(elementtoken => {
+        // console.log(`data ${elementtoken}: `, data[elementtoken]);
+        if (Object.keys(elementtoken).includes("token_access")) {
+          const k = "token_access";
+          const v = Object(elementtoken)[k] as string;
+          const liveTime = Object(elementtoken)[k] as string;
+          setSessionIdInCookie(k, v, liveTime);
+        } else {
+          const k = "token_refresh";
+          const v: string = Object(elementtoken)[k] as string;
+          const liveTime: string = Object(elementtoken)[k] as string;
+          setSessionIdInCookie(k, v, liveTime);
+          window.location.pathname = "/weather/";
+        }
+      });
     }
   } 
   catch (error: unknown | Error) {
