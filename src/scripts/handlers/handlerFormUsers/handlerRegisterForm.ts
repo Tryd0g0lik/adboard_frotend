@@ -7,6 +7,7 @@ import { validateRegex } from "src/scripts/validators/validateRegex";
  */
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
 
+
 /***
  * Function that handle user's forms. It is the registration form and login form.
  * @param: event: KeyboardEvent ('to the 'Enter'keydown')
@@ -103,10 +104,17 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
       console.warn(`User form invalid: ${response.statusText}`);
       return;
     }
+    const data = await response.json();
     // CHANGE LOCATION
     if (pathname.includes("register")) {
       setTimeout(() => window.location.pathname = "/users/login/", 200);
-    };
+    } else {
+      // const cookieName = 'sessionId';
+      // const cookieValue = sessionId;
+      // const maxAge = 60 * 60 * 24; // Время жизни cookie в секундах (например, 1 день)
+
+      // document.cookie = `${cookieName}=${cookieValue}; max-age=${maxAge}; path=/; secure; samesite=strict`;
+    }
   } 
   catch (error: unknown | Error) {
     console.error("USER FORM ERROR: ", (error as Error).message);
