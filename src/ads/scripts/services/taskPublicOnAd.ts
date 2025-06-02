@@ -2,9 +2,9 @@
  * src\scripts\services\taskPublicOnAd.ts
  */
 
-import teskInsertOneAd from "src/scripts/services/taskCreateOneElement";
-import { asyncHandlerRequestGetOneAd } from "src/scripts/handlers/handlerSingleAd/handlerGetOneAd";
-import { AdLine } from "src/interfaces";
+import teskInsertOneAd from "src/ads/scripts/services/taskCreateOneElement";
+import { asyncHandlerRequestGetOneAd } from "src/ads/scripts/handlers/handlerSingleAd/handlerGetOneAd";
+import { AdLine } from "src/ads/interfaces";
 const asyncTaskPublicOneAd = async () => {
   // GET ID OF AD FROM THE URL
   const pathname = window.location.pathname;

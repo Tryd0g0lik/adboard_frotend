@@ -1,8 +1,8 @@
 /**
  * src\sripts\handlers\handlersAdsCollection\handlerReceiveNewAd.ts
  */
-import type { AdLine, AdLinesCollection } from "src/interfaces";
-import teskInsertOneAd from "src/scripts/services/taskCreateOneElement";
+import type { AdLine, AdLinesCollection } from "src/ads/interfaces";
+import teskInsertOneAd from "src/ads/scripts/services/taskCreateOneElement";
 /**
  * This handler for publicate the one new ad or list of ads's collection in web-page.
  * @param content Adline's or AdLinesCollection data type. Default value is undefined.

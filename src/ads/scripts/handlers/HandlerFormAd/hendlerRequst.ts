@@ -1,7 +1,7 @@
 /**
  * src\sripts\handlers\HandlerFormAd\hendlerRequst.ts
  */
-import { AdLine } from "src/interfaces";
+import { AdLine } from "src/ads/interfaces";
 
 /**
  * This make the post-request to server, it adds the one a new Ad.

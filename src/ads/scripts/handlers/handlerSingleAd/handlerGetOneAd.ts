@@ -1,7 +1,7 @@
 /**
  * src\scripts\handlers\handlerSingleAd\handlerGetOneAd.ts
  */
-import type { AdLine } from "src/interfaces";
+import type { AdLine } from "src/ads/interfaces";
 
 /**
  * @param: pathname string. This is the path of api.  Exemple - '/api/ad/one/'.

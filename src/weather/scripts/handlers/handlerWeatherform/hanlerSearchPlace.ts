@@ -2,7 +2,7 @@
  * src\scripts\handlers\handlerWeatherform\hanlerSearchPlace.ts
  */
 let inputSetTimout: NodeJS.Timeout | number = 0;
-import { fetchRequestWeather } from "src/scripts/handlers/handlerWeatherform/weatherRequest";
+import { fetchRequestWeather } from "src/weather/scripts/handlers/handlerWeatherform/weatherRequest";
 type T = string;
 type Item = Record<T, string | Number>;
 

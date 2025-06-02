@@ -1,13 +1,13 @@
 /**
  * src\sripts\handlers\HandlerFormAd\index.ts
  */
-import { asyncHandlerRequestAddImage } from "src/scripts/handlers/HandlerFormImg";
-import type { AdLine } from "src/interfaces";
+import { asyncHandlerRequestAddImage } from "src/ads/scripts/handlers/HandlerFormImg";
+import type { AdLine } from "src/ads/interfaces";
 import { asyncHandlerReceivesData } from "../handlersAdsCollection/handlerReceiveNewAd";
 import { asyncHandlerRequestAddAd } from "./hendlerRequst";
 import { validateMinLength, validateMaxLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
-import getErrorContent from "src/scripts/services/taskGetErrorContent";
+import getErrorContent from "src/adboard/scripts/services/taskGetErrorContent";
 
 /**
  * This function for add the two listens to the form, the first is for send ads to server, and the second is for send image file to server.

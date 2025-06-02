@@ -12,6 +12,7 @@
     "dotenv-webpack": "^8.1.0",
     "html-entities": "^2.5.2",
     "jsonwebtoken": "^9.0.2",
+    "merge": "^2.1.1",
     "openmeteo": "^1.2.0",
     "package.json": "^2.0.1",
     "reselect": "^5.1.1",
@@ -21,9 +22,11 @@
   "scripts": {
     "lint": "eslint src --ext jsx,ts,tsx",
     "cssstyle": "npx @tailwindcss/cli -i ./src/styles/style.css -o ./src/output.css --watch",
-    "build": "webpack --mode=development --config webpack.config.js",
-    "build:dev": "webpack --mode=development --config webpack.dev.config.js",
-    "server": "webpack server --mode=development  --config webpack.config.js",
+    "build:ads": "webpack --mode=development --config webpack.config.ads.js",
+    "build:common": "webpack --mode=development --config webpack.config.common.js",
+    "build:adboard": "webpack --mode=development --config webpack.config.adboard.js",
+    "build:weather": "webpack --mode=development --config webpack.config.weather.js",
+    "build": "npm run build:common && npm run build:ads && npm run build:adboard && npm run build:weather",
     "prepare": "husky"
   },
   "devDependencies": {

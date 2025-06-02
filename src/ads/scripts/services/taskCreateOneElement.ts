@@ -1,7 +1,7 @@
 /**
  * src\scripts\services\createOneElement.ts
  */
-import type { AdLine } from "src/interfaces";
+import type { AdLine } from "src/ads/interfaces";
 /**
  * 
  * @param instance HTMLElement This is main BOX for inserting by one line of ads

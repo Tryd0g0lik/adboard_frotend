@@ -1,7 +1,7 @@
 /**
  * src\scripts\services\taskPublicAllAd.ts
  */
-import { asyncHandlerGetAdsCollection } from "src/scripts/handlers/handlersAdsCollection/handlerRequestlCollection";
+import { asyncHandlerGetAdsCollection } from "src/ads/scripts/handlers/handlersAdsCollection/handlerRequestlCollection";
 import { asyncHandlerReceivesData } from "../handlers/handlersAdsCollection/handlerReceiveNewAd";
 
 /**

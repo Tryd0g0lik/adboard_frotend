@@ -1,8 +1,8 @@
 /**
  * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
  */
-import { setSessionIdInCookie } from "src/scripts/services/cookies/setCookies";
-import getErrorContent from "src/scripts/services/taskGetErrorContent";
+import { setSessionIdInCookie } from "src/adboard/scripts/services/cookies/setCookies";
+import getErrorContent from "src/adboard/scripts/services/taskGetErrorContent";
 import { validateMaxLength, validateMinLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
 

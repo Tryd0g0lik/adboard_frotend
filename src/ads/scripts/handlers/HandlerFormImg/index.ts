@@ -2,7 +2,7 @@
  * src\sripts\handlers\HandlerFormImg\index.ts
  */
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
-import type { AdLine } from "src/interfaces";
+import type { AdLine } from "src/ads/interfaces";
 /**
  * This handler of post request for add only one an image to server.
  * @param event handler of clik by button of form. This form load the image to server.

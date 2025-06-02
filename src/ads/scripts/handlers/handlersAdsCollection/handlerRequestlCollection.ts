@@ -2,7 +2,7 @@
  * src\scripts\handlers\handlersAdsCollection\handlerRequestlCollection.ts
  * */
 const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
-import type { AdLinesCollection } from "src/interfaces";
+import type { AdLinesCollection } from "src/ads/interfaces";
 
 /**
  * This function is download the collection of the ads from server.
