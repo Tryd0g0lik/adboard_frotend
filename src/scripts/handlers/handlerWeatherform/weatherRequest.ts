@@ -2,8 +2,6 @@
  * src\scripts\handlers\handlerWeatherform\weatherRequest.ts
  */
 import { fetchWeatherApi } from 'openmeteo';
-import teskInsertOneAd from './taskCreateOneElement';
-
 /**
  * This function is used to fetch weather data from the Open-Meteo API
  * @param params 
@@ -43,8 +41,10 @@ export async function fetchRequestWeather(params) {
       weatherData.hourly.time[i].toISOString(),
       weatherData.hourly.temperature2m[i]
     );
-    
+    const newLineHtml = document.createElement('li');
+    newLineHtml.textContent = `${weatherData.hourly.time[i].toISOString()}: ${weatherData.hourly.temperature2m[i]}`;
+    (ulHtml as HTMLElement).append(newLineHtml);
     // ulHtml?.append()
-    teskInsertOneAd(ulHtml as HTMLUListElement, `${weatherData.hourly.time[i].toISOString()}: ${weatherData.hourly.temperature2m[i]}`);
+    // teskInsertOneAd(ulHtml as HTMLUListElement,);
   }
 }
