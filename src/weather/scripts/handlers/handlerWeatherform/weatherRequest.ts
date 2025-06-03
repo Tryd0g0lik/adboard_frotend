@@ -1,5 +1,5 @@
 /**
- * src\scripts\handlers\handlerWeatherform\weatherRequest.ts
+ * src\weather\scripts\handlers\handlerWeatherform\weatherRequest.ts
  */
 import { fetchWeatherApi } from 'openmeteo';
 /**

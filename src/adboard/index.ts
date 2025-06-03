@@ -1,1 +1,4 @@
-import "src/adboard/app";
+/**
+ * src\adboard\index.ts
+ */
+import "./app";

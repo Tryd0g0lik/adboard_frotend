@@ -9,7 +9,7 @@ import { AdLine } from "src/ads/interfaces";
  * @returns boolean or AdLine
  */
 export const asyncHandlerRequestAddAd = async (event: MouseEvent): Promise<boolean | { data: AdLine }> => {
-  const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
+  import { URL_HOST_FOR_API } from "@ENV";
   event.stopPropagation();
   // GET FORM HTML FOR AD
   const currenttarget = event.currentTarget; 

@@ -1,8 +1,7 @@
 /**
  * src\scripts\handlers\handlerSingleAd\handleRequsetReceiveAd.ts
  */
-
-const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
+import { URL_HOST_FOR_API } from "@ENV";
 
 function handlerSubmitGetIdFroHTML(event: MouseEvent): string|  void{
   if (!(event.target instanceof HTMLElement)) {

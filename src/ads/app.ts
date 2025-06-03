@@ -1,15 +1,15 @@
 /**
  * src\scripts\index.ts
  */
-import { formPage } from "./scripts/handlers/HandlerFormAd";
-import asyncPublicAllAd from "src/ads/scripts/services/taskPublicAllAd";
-import { asyncGetListenerEvent, asyncHandlerOneAdPublic } from "src/scripts/handleRequsetReceiveAd";
-import asyncTaskPublicOneAd from "./scripts/services/taskPublicOnAd";
+// import { formPage } from "./scripts/handlers/HandlerFormAd";
+// import asyncPublicAllAd from "src/ads/scripts/services/taskPublicAllAd";
+// import { asyncGetListenerEvent, asyncHandlerOneAdPublic } from "src/scripts/handleRequsetReceiveAd";
+// import asyncTaskPublicOneAd from "./scripts/services/taskPublicOnAd";
 // import { handlerUserForm } from "./scripts/handlers/handlerFormUsers/handlerRegisterForm";
 // import { hendlerActionOfInput, subHandlerLines } from "./scripts/handlers/handlerWeatherform/hanlerSearchPlace";
 
 const handlerCommmon = (): void => {
-  if (window.location.pathname.includes("register")) {
+  // if (window.location.pathname.includes("register")) {
 
     // Promise.all([
     //   asyncGetListenerEvent("keydown", handlerUserForm, undefined, "form-login")
@@ -27,11 +27,11 @@ const handlerCommmon = (): void => {
   //   asyncGetListenerEvent("input", hendlerActionOfInput, undefined, "search");
   //   asyncGetListenerEvent("click", subHandlerLines, undefined, "search");
   // } else {
-    formPage();
+  // formPage();
     // publicAllAd - public all ads in HTML
-    const idName = 'ads-collections';
-    Promise.all([asyncPublicAllAd(), asyncGetListenerEvent("click", asyncHandlerOneAdPublic, undefined, idName), asyncTaskPublicOneAd()]);
-  }
+  // const idName = 'ads-collections';
+  // Promise.all([asyncPublicAllAd(), asyncGetListenerEvent("click", asyncHandlerOneAdPublic, undefined, idName), asyncTaskPublicOneAd()]);
+  // }
 };
 
 document.removeEventListener("DOMContentLoaded", handlerCommmon);

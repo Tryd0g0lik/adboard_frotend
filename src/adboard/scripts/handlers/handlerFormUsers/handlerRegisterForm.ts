@@ -5,17 +5,18 @@ import { setSessionIdInCookie } from "src/adboard/scripts/services/cookies/setCo
 import getErrorContent from "src/adboard/scripts/services/taskGetErrorContent";
 import { validateMaxLength, validateMinLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
-
+import { URL_HOST_FOR_API } from "@ENV";
 /**
  * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
  */
-const URL_HOST_FOR_API = process.env.URL_HOST_FOR_API || "localhost";
+// import { URL_HOST_FOR_API } from "@ENV";
 
 /***
  * Function that handle user's forms. It is the registration form and login form.
  * @param: event: KeyboardEvent ('to the 'Enter'keydown')
  */
 export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
+  console.log('REGISTER FORM');
   if (!event.key  || (event.key && event.key.toLowerCase() !== "enter")){
     return;
   };
@@ -112,7 +113,7 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     const data = await response.json();
     // CHANGE LOCATION
     if (pathname.includes("register")) {
-      setTimeout(() => window.location.pathname = "/login/", 200);
+      setTimeout(() => window.location.pathname = "/users/login/", 200);
     } else {
       Array.from(
         data["data"] as Record<string, string | number>[]

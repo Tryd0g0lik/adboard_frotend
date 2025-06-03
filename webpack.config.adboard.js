@@ -17,12 +17,12 @@ module.exports = merge(webpackConfig, {
   entry:
   {
     index: {
-      import: 'src\\adboard\\index.ts',
+      import: 'src/adboard/index.ts',
       dependOn: 'shared'
     },
     // https://webpack.js.org/guides/code-splitting/#entry-dependencies
     another: {
-      import: './src/adboard/map/another-module.ts',
+      import: 'src/adboard/map/another-module.ts',
       dependOn: 'shared',
     },
     shared: 'lodash',

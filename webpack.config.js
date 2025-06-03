@@ -102,7 +102,9 @@ module.exports = {
       path.resolve(__dirname, "node_modules"),
     ],
     alias: {
-      // "@Service": path.resolve(__dirname, "src/services"),
+      "@ADBoards": path.resolve(__dirname, "src/adboard"),
+      "@ADBoards-handlers": path.resolve(__dirname, "src/adboard/scripts/handlers"),
+      "@ENV": path.resolve(__dirname, "dotenv__.ts"),
       // "@Interfaces": path.resolve(__dirname, "src/interfaces.ts"),
     }
   },
