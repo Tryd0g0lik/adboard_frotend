@@ -2,14 +2,14 @@
  * src\sripts\handlers\HandlerFormAd\hendlerRequst.ts
  */
 import { AdLine } from "src/ads/interfaces";
-
+import { URL_HOST_FOR_API } from "@ENV";
 /**
  * This make the post-request to server, it adds the one a new Ad.
  * @param event Mouse click.
  * @returns boolean or AdLine
  */
 export const asyncHandlerRequestAddAd = async (event: MouseEvent): Promise<boolean | { data: AdLine }> => {
-  import { URL_HOST_FOR_API } from "@ENV";
+
   event.stopPropagation();
   // GET FORM HTML FOR AD
   const currenttarget = event.currentTarget; 
@@ -19,7 +19,7 @@ export const asyncHandlerRequestAddAd = async (event: MouseEvent): Promise<boole
   try {
     // REQUEST TO SERVER AND SEND AD's DATA OF FORM
     console.log(" REQUEST TO SERVER AND SEND AD's DATA OF FORM;");
-    const response = await fetch(`${URL_HOST_FOR_API}/api/v1/ads/`,
+    const response = await fetch(`${URL_HOST_FOR_API}/api/v1/ads/index/`,
       {
         method: "POST",
         body: dataF0rm

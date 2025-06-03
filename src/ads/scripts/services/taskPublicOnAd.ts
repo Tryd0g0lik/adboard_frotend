@@ -10,7 +10,7 @@ const asyncTaskPublicOneAd = async () => {
   const pathname = window.location.pathname;
   const index = pathname.split("/")[2];
   // GET DATA OF AD FROM THE SERVER
-  const response = await asyncHandlerRequestGetOneAd('/api/v1/ads/', index);
+  const response = await asyncHandlerRequestGetOneAd('/api/v1/ads/index/', index);
   if (!response){
     console.error("The received data from server is invalid!");
     return;

@@ -11,7 +11,7 @@ import type { AdLinesCollection } from "src/ads/interfaces";
 export async function asyncHandlerGetAdsCollection(): Promise<{ data: AdLinesCollection } | void> { 
   try{
     // REQUEST GET COLLECTION ADS
-    const url = new URL(`${URL_HOST_FOR_API}/api/v1/ads`);
+    const url = new URL(`${URL_HOST_FOR_API}/api/v1/ads/index/`);
     const response = await fetch(url,
       {
         method: "GET",

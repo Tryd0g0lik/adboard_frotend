@@ -36,6 +36,12 @@
       "@ADBoards-handlers/*": [
         "src/adboard/scripts/handlers/*",
       ],
+      "@ADS/*": [
+        "src/ads/*",
+      ],
+      "@ADBS-handlers/*": [
+        "src/ads/scripts/handlers/*",
+      ],
       "@ENV": [
         "dotenv__.ts",
       ],
