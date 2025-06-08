@@ -45,7 +45,14 @@ input[type="file"] {
   background: var(--bs-tertiary-bg);
 
 }
+ul{
+  padding: 0;
+  margin: 0;
+}
 
+#pagination{
+  padding-top: 20px;
+}
 .pagination {
   a.page-link {
     border-color: var(--bs-border-color);
@@ -57,6 +64,7 @@ input[type="file"] {
 .invalid {
   color: var(--bs-danger-text-emphasis);
 }
+
 div.hidden {
   display: block;
 
@@ -77,7 +85,7 @@ div.hidden {
 #form-register,
 #form-register label,
 #form-login,
-#form-login label{
+#form-login label {
   display: block;
 }
 
@@ -90,20 +98,35 @@ div.hidden {
 /* ---- PUBLICK COLLECTION ADS ----*/
 .ad-view {
   div.ad-view {
-      overflow: hidden;
-      text-align: left;
-    }
+    overflow: hidden;
+    text-align: left;
+  }
+
   .ad-view-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    max-height: 34px;
-    
-    >div {
-        overflow: hidden;
-      }
-}
+    min-height: 34px;
+    max-height: 40px;
+    overflow: hidden;
 
+    >div {
+      overflow: hidden;
+    }
+
+    >.ad-view-content {
+      max-width: 700px;
+    }
+
+    >.ad-view-title {
+      max-width: 200px;
+    }
+    >.ad-view-footer{
+      width: 100%;
+      max-width: 100px;
+    
+    }
+  }
   h2,
   div.ad-view-content,
   button {
@@ -116,41 +139,67 @@ div.hidden {
     line-height: 1;
     vertical-align: top;
   }
-    
+
 }
 
 
 /* ---- PAGE OF ONE AD ----*/
 #ad-page-container {
   height: clamp(100px, 47vh, 500px);
-  
-    
-      // width: clamp(250px, 280px, 660px);
-    
 
-  
-  
-    .ad-view-title{
-      text-align: center;
-    }
-    .ad-view-container{
+
+  // width: clamp(250px, 280px, 660px);
+
+
+
+
+  .ad-view-title {
+    max-width: 200px;
+  }
+
+  .ad-view-container {
+    max-height: none;
+    flex-wrap: wrap;
+
+    >.ad-view-content {
+      text-align: left;
       max-height: none;
-      flex-wrap: wrap;
-      >.ad-view-content {
-          text-align: left; 
-          max-height: none;
-      }
-      >div {
-        display: block;
-        min-width: 280px;
-      width: 100%;   
-      }
+      max-width: 700px;
     }
-    
+
+    >div {
+      display: block;
+      min-width: 280px;
+      width: 100%;
+    }
+  }
+
   h2 {
     font-size: clamp(18px, 2rem, 2.5rem);
   }
 }
+
+@media all and (max-width: 400px){
+  .ad-view .ad-view-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    min-height: 34px;
+    flex-direction: column;
+  }
+  .form>.mb-3:first-child, .form > .mb-3:nth-child(2){
+    margin: 0 auto;
+  }
+  .form .ads-form,
+    #form-register,
+    #form-login{
+      width: inherit;
+    }
+  body {
+    font-size: 14px;
+  }
+}
+
 :root,
 [data-bs-theme=dark] {
   color-scheme: dark;

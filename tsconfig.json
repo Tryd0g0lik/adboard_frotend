@@ -30,15 +30,21 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      // "@Services/*": [
-      //   "src/services/*",
-      // ],
-      // "@Interfaces": [
-      //   "src/interfaces.ts",
-      // ],
-      // "@Logs": [
-      //   "src/backend/src/server/logs/index.ts",
-      // ],
+      "@ADBoards/*": [
+        "src/adboard/*",
+      ],
+      "@ADBoards-handlers/*": [
+        "src/adboard/scripts/handlers/*",
+      ],
+      "@ADS/*": [
+        "src/ads/*",
+      ],
+      "@ADBS-handlers/*": [
+        "src/ads/scripts/handlers/*",
+      ],
+      "@ENV": [
+        "dotenv__.ts",
+      ],
     }
   },
   "include": [
