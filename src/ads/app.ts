@@ -14,7 +14,7 @@ const handlerCommmon = (): void => {
   formPage();
   // publicAllAd - public all ads in HTML
   const idName = 'ads-collections';
-  Promise.all([asyncPublicAllAd(), asyncGetListenerEvent("click", asyncHandlerOneAdPublic, undefined, idName), asyncTaskPublicOneAd()]);
+  Promise.allSettled([asyncPublicAllAd(), asyncGetListenerEvent("click", asyncHandlerOneAdPublic, undefined, idName), asyncTaskPublicOneAd()]);
 
 };
 

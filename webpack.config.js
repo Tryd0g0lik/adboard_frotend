@@ -14,12 +14,12 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'none',
   cache: false, // the cache is close
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      maxSize: 200000,
-    },
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //     maxSize: 200000,
+  //   },
+  // },
   // https://webpack.js.org/guides/code-splitting/#entry-dependencies
   optimization: {
     runtimeChunk: 'single',
@@ -36,11 +36,11 @@ module.exports = {
     ],
 
   },
-  performance: {
-    maxAssetSize: 70000, // Set max asset size to 300 KiB
-    maxEntrypointSize: 70000, // Set max entry point size to 300 KiB
-    // hints: 'warning', // Can be 'error', 'warning', or false
-  },
+  // performance: {
+  //   maxAssetSize: 70000, // Set max asset size to 300 KiB
+  //   maxEntrypointSize: 70000, // Set max entry point size to 300 KiB
+  //   // hints: 'warning', // Can be 'error', 'warning', or false
+  // },
   target: 'web',
   module: {
     rules: [

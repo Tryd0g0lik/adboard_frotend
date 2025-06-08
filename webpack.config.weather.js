@@ -27,13 +27,20 @@ module.exports = merge(webpackConfig, {
     },
     shared: 'lodash',
   },
+  optimization: {
+    runtimeChunk: 'single',
+  },
 
   output: {
-    path: path.resolve(__dirname, '../weather/static'),
+    path: path.resolve(__dirname, '../weather/static/weather'),
     filename: 'scripts/main-[id]-[fullhash].js',
     publicPath: '/',
-    // clean: true,
+    clean: true,
 
+
+  },
+  optimization: {
+    runtimeChunk: 'single',
   },
   module: {
     rules: [
@@ -85,6 +92,7 @@ module.exports = merge(webpackConfig, {
       test: /\.tsx?$/,
       filename: '[file].map.[query]',
       include: path.resolve(__dirname, '../weather/static/bundles'),
+      columns: true
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/[name].css'

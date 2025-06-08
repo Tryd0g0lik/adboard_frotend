@@ -18,14 +18,14 @@ module.exports = {
   {
     index: {
       import: './src/index.ts',
-      dependOn: 'shared'
+      // dependOn: 'shared'
     },
     // https://webpack.js.org/guides/code-splitting/#entry-dependencies
-    another: {
-      import: './src/map/another-module.ts',
-      dependOn: 'shared',
-    },
-    shared: 'lodash',
+    // another: {
+    //   import: './src/map/another-module.ts',
+    //   dependOn: 'shared',
+    // },
+    // shared: 'lodash',
     // another: './src/another-module.js',
   },
   cache: false, // the cache is close
