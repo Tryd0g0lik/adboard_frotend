@@ -1,5 +1,5 @@
 /***
- * src\scripts\services\cookies\setCoocie.ts
+ * src\adboard\scripts\services\cookies\setCookies.ts
  */
 
 /**

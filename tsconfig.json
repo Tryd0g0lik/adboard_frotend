@@ -45,6 +45,9 @@
       "@ENV": [
         "dotenv__.ts",
       ],
+      "@Interfaces": [
+        "src/intarfeces.ts"
+      ],
     }
   },
   "include": [

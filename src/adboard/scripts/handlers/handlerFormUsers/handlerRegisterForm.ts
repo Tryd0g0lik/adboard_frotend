@@ -1,14 +1,12 @@
 /**
- * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
+ * src\adboard\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
  */
 import { setSessionIdInCookie } from "src/adboard/scripts/services/cookies/setCookies";
 import getErrorContent from "src/adboard/scripts/services/taskGetErrorContent";
 import { validateMaxLength, validateMinLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
 import { URL_HOST_FOR_API } from "@ENV";
-/**
- * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
- */
+
 // import { URL_HOST_FOR_API } from "@ENV";
 
 /***
@@ -115,8 +113,9 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     if (pathname.includes("register")) {
       setTimeout(() => window.location.pathname = "/users/login/", 200);
     } else {
+      type Data = Record<string, string | number>[];
       Array.from(
-        data["data"] as Record<string, string | number>[]
+        data["data"] as Data
       ).forEach(elementtoken => {
         // console.log(`data ${elementtoken}: `, data[elementtoken]);
         if (Object.keys(elementtoken).includes("token_access")) {
