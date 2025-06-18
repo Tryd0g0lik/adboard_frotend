@@ -70,7 +70,7 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
 
   // CHECK VALIDITY PASSWORD
   const password = form.get('password');
-  const regexPassword = /(^[a-zA-Z%0-9}{_%]{2,30}$|^$)/;
+  const regexPassword = /(^[a-zA-Z%0-9{_%]{2,30}$|^$)/;
 
   try {
     // VALIDATE TITLE AD
@@ -121,14 +121,20 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
         if (Object.keys(elementtoken).includes("token_access")) {
           const k = "token_access";
           const v = Object(elementtoken)[k] as string;
-          const liveTime = Object(elementtoken)[k] as string;
-          setSessionIdInCookie(k, v, liveTime);
+          const keyLifeTime = Object.keys(elementtoken)[1];
+          const liveTime = Math.round(
+            parseFloat(Object(elementtoken)[keyLifeTime])
+          );
+          setSessionIdInCookie(k, v, String(liveTime));
         } else {
           const k = "token_refresh";
           const v: string = Object(elementtoken)[k] as string;
-          const liveTime: string = Object(elementtoken)[k] as string;
-          setSessionIdInCookie(k, v, liveTime);
-          window.location.pathname = "/weather/";
+          const keyLifeTime = Object.keys(elementtoken)[1];
+          const liveTime = Math.round(
+            Object(elementtoken)[keyLifeTime]
+          );
+          setSessionIdInCookie(k, v, String(liveTime));
+          window.location.pathname = "/";
         }
       });
     }

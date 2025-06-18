@@ -14,5 +14,5 @@ export function setSessionIdInCookie(key: string, value: string, lifeTime: strin
   const cookieValue = value;
   // const maxAge = 60 * 60 * 24; // Время жизни cookie в секундах (например, 1 день)
 
-  document.cookie = `${cookieName}=${cookieValue}; max-age=${lifeTime}; path=/; secure; samesite=strict`;
+  document.cookie = `${cookieName}=${cookieValue}; max-age=${lifeTime}; path=/; samesite=strict`;
 }

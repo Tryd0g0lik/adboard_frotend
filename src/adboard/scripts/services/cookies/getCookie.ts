@@ -11,7 +11,7 @@ interface CookieOptions {
   max_age?: string,
   path?: string,
   domain?: string,
-  secure?: boolean;
+  secure?: boolean
 }
 
 /**
