@@ -9,6 +9,7 @@ import type { AdLine } from "src/ads/interfaces";
  * @returns json data (`{ data: AdLine[] `)
  */
 export async function asyncHandlerRequestGetOneAd(pathname: string, index: string): Promise<{ data: AdLine[] } | void> {
+
   try {
     const response = await fetch(`${pathname}${index}`, {
       method: 'GET',
