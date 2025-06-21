@@ -51,7 +51,8 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     getErrorContent(fieldHTML as HTMLElement, err as Error);
     return;
   }
-  if (form.get('email') || (typeof form.get('email')).includes("string") && (form.get('email') as string).length == 0) {
+  const email = form.get('email')
+  if (email && (email as string).includes("@") || (typeof form.get('email')).includes("string") && (form.get('email') as string).length == 0) {
     try {
       // VALIDATE EMAIL
       const email = (form.get('email') as string).trim();
@@ -69,8 +70,9 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   };
 
   // CHECK VALIDITY PASSWORD
-  const password = ((form.get('password') as string) as string).trim();
+  const password = ((form.get('password') as string) as string);
   const regexPassword = /(^[a-zA-Z%0-9{_%]{2,29}$|^$)/;
+  const confirmPassword = ((form.get('confirm_password') as string) as string);
 
   try {
     // VALIDATE TITLE AD
@@ -85,10 +87,9 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     getErrorContent(fieldHTML as HTMLElement, err as Error);
     return;
   }
-  if (form.get('confirm_password') || (typeof form.get('confirm_password')).includes("string") && (form.get('confirm_password') as string).length == 0) {
-    // CHECK VALIDITY CONFIRM PASSWORD
-    const confirmPassword = form.get('confirm_password');
-    if (confirmPassword !== password) {
+  if (confirmPassword || (typeof form.get('confirm_password')).includes("string") && (form.get('confirm_password') as string).length == 0) {
+    // CHECK VALIDITY CONFIRM PASSWORD ;
+    if (confirmPassword.trim() !== password.trim()) {
       const fieldHTML = ((currentTarget as HTMLElement).querySelector('input[name="confirm_password"]')) as HTMLElement;
       const err = new Error("err: Check the passwords.");
       getErrorContent(fieldHTML as HTMLElement, err as Error);

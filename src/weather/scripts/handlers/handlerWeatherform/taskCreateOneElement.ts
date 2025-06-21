@@ -2,7 +2,7 @@
  * src\scripts\handlers\handlerWeatherform\taskCreateOneElement.ts
  */
 
-import { AdLine } from "src/interfaces";
+
 
 /**
  * 

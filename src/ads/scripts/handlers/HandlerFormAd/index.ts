@@ -27,7 +27,8 @@ const asyncGetDataForm = async (e: MouseEvent): Promise<boolean> => {
   const dataF0rm = new FormData(currenttarget as HTMLFormElement);
   // CHECK TITLE OF AD FORM
   const title = (dataF0rm.get('title') as string).trim();
-  const regexTitle = /^(?!.*  )[a-zA-Zа-яА-ЯёЁ][\w ,\-_\dа-яёА-ЯЁ0-9]{1,98}[a-zA-Zа-яА-ЯёЁ0-9]$[^\S\W \\]?/;
+  const regexTitle = /^[a-zA-Zа-яА-ЯёЁ][\w ,\-_\dа-яёА-ЯЁ0-9]{1,98}[a-zA-Zа-яА-ЯёЁ0-9!\.\?]$/;
+  // const regexTitle = /^(?!.*  )[a-zA-Zа-яА-ЯёЁ][\w ,\-_\dа-яёА-ЯЁ0-9]{1,98}[a-zA-Zа-яА-ЯёЁ0-9]$[^\S\W \\]?/;
 
   try {
     // VALIDATE TITLE AD

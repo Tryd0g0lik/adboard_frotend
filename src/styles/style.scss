@@ -74,6 +74,14 @@ div.hidden {
 .form {
   display: flex;
   justify-content: flex-start;
+  span{
+    display: block;
+    font-size: 12px;
+    color: var(--info);
+  }
+  label{
+    margin: 0;
+  }
 }
 
 /*.form>.mb-3:first-child,
