@@ -102,6 +102,23 @@ div.hidden {
 }
 
 /* ---- PUBLICK COLLECTION ADS ----*/
+.form{
+  flex-wrap: wrap;
+}
+#form-ads {
+  max-width: 650px;
+  >div{
+    width: 100%;
+  }
+input[name="title"]{
+  width: 100%;
+  max-width: 320px;
+}
+input[type="file"]{
+  max-width: 320px;
+}
+
+}
 .ad-view {
   div.ad-view {
     overflow: hidden;
@@ -147,7 +164,10 @@ div.hidden {
   }
 
 }
-
+.ads-form__full-image-file,
+.img-ads{
+  display: none;
+}
 
 /* ---- PAGE OF ONE AD ----*/
 #ad-page-container {
@@ -184,6 +204,10 @@ div.hidden {
     font-size: clamp(18px, 2rem, 2.5rem);
   }
 }
+
+
+
+
 
 @media all and (max-width: 400px){
   .ad-view .ad-view-container{

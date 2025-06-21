@@ -26,7 +26,9 @@ export const asyncHandlerRequestAddAd = async (event: MouseEvent): Promise<boole
       }
     );
     if (!response.ok) {
-      console.log("RESPONSE OF AD NOT Ok");
+      const body = await response.json() as { "detail": string[] };
+
+      console.log("RESPONSE OF AD NOT Ok", body["detail"][0]);
       return false;
     } 
     // CLEANING THE BODY OF FORM HTML

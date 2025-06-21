@@ -5,16 +5,17 @@ import { formPage } from "@ADBS-handlers/HandlerFormAd";
 import asyncPublicAllAd from "@ADS/scripts/services/taskPublicAllAd";
 import { asyncGetListenerEvent, asyncHandlerOneAdPublic } from "src/scripts/handleRequsetReceiveAd";
 import asyncTaskPublicOneAd from "@ADS/scripts/services/taskPublicOnAd";
-
+import { taskChegeIdDOM } from "@ADS/scripts/services/taskChangeId";
 const handlerCommmon = (): void => {
 
   const formPagePromise = new Promise((resolve) => {
     formPage();
     resolve(true);
   });
+
   // publicAllAd - public all ads in HTML
   const idName = 'ads-collections';
-  Promise.allSettled([formPagePromise, asyncPublicAllAd(), asyncGetListenerEvent("click", asyncHandlerOneAdPublic, undefined, idName), asyncTaskPublicOneAd()]);
+  Promise.allSettled([taskChegeIdDOM(), formPagePromise, asyncPublicAllAd(), asyncGetListenerEvent("click", asyncHandlerOneAdPublic, undefined, idName), asyncTaskPublicOneAd()]);
 
 };
 
