@@ -6,7 +6,7 @@
  * Change the ID of DOM element to the ads page.
  * @returns void
  */
-export const taskChegeIdDOM = () => {
+export const taskChangeIdDOM = () => {
   const sectionHtml =  document.getElementById("form-login");
   if (!sectionHtml) {
     return;
