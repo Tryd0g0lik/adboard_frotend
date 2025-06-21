@@ -26,7 +26,7 @@ const asyncGetDataForm = async (e: MouseEvent): Promise<boolean> => {
   // GET DATA OF FORM
   const dataF0rm = new FormData(currenttarget as HTMLFormElement);
   // CHECK TITLE OF AD FORM
-  const title = dataF0rm.get('title');
+  const title = (dataF0rm.get('title') as string).trim();
   const regexTitle = /^(?!.*  )[a-zA-Zа-яА-ЯёЁ][\w ,\-_\dа-яёА-ЯЁ0-9]{1,98}[a-zA-Zа-яА-ЯёЁ0-9]$[^\S\W \\]?/;
 
   try {
@@ -44,7 +44,7 @@ const asyncGetDataForm = async (e: MouseEvent): Promise<boolean> => {
   }
   // CHECK DESCRIPTION AD FORM
   try {
-    const description = dataF0rm.get('description');
+    const description = (dataF0rm.get('description') as string).trim();
     await Promise.all([
       validateMinLength(description as string, 10),
       validateMaxLength(description as string, 500),

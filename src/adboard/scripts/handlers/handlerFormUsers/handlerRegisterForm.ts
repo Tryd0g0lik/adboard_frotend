@@ -34,8 +34,8 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   body_.method = "POST";
   body_.body = form as FormData;
   // CHECK VALIDITY USERNAME
-  const title = form.get('username');
-  const regexUsername = /(^[a-zA-Z][a-zA-Z_]{2,30}$|^$)/;
+  const title = (form.get('username') as string).trim();
+  const regexUsername = /(^[a-zA-Z][a-zA-Z_0-9]{2,29}$|^$)/;
   const regexEmail = /(^[a-zA-Z0-9]{3,50}@{1}[a-zA-Z]{2,30}\.[a-zA-Z]{2,5}$|^$)/;
   (currentTarget as HTMLElement).querySelector(".invalid")?.remove();
   try {
@@ -54,7 +54,7 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   if (form.get('email') || (typeof form.get('email')).includes("string") && (form.get('email') as string).length == 0) {
     try {
       // VALIDATE EMAIL
-      const email = form.get('email');
+      const email = (form.get('email') as string).trim();
       await Promise.all([
         validateMinLength(email as string, 3),
         validateMaxLength(email as string, 50),
@@ -69,8 +69,8 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   };
 
   // CHECK VALIDITY PASSWORD
-  const password = form.get('password');
-  const regexPassword = /(^[a-zA-Z%0-9{_%]{2,30}$|^$)/;
+  const password = ((form.get('password') as string) as string).trim();
+  const regexPassword = /(^[a-zA-Z%0-9{_%]{2,29}$|^$)/;
 
   try {
     // VALIDATE TITLE AD
