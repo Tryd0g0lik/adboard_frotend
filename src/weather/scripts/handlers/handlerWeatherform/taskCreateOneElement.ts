@@ -2,8 +2,6 @@
  * src\scripts\handlers\handlerWeatherform\taskCreateOneElement.ts
  */
 
-
-
 /**
  * 
  * @param instance HTMLElement This is main BOX for inserting by one line of ads
@@ -14,7 +12,7 @@ export const teskInsertOneAd = (instance: HTMLElement, content: string): void =>
   // CREATE THE PARENT CONTEXT's BOX 
   const newLineHtml = document.createElement('li');
   newLineHtml.className = 'ad-view';
-  newLineHtml.dataset.ad = `${(content as unknown as AdLine).id}`;
+  newLineHtml.dataset.ad = `${(content as unknown as { "id": string }).id}`;
 
   // CREATE CONTENT CONTAINER
   const viewContentHTml = document.createElement('div');

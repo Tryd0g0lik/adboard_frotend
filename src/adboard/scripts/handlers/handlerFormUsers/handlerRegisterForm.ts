@@ -109,12 +109,12 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
       console.warn(`User form invalid: ${response.statusText}`);
       return;
     }
-    const data = await response.json();
+    const data = await response.json(); 
     // CHANGE LOCATION
     if (pathname.includes("register")) {
       setTimeout(() => window.location.pathname = "/users/login/", 200);
     } else {
-      type Data = Record<string, string | number>[];
+      type Data = { string: string | number }[];
       Array.from(
         data["data"] as Data
       ).forEach(elementtoken => {
