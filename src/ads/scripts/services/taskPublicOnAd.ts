@@ -8,7 +8,10 @@ import { AdLine } from "src/ads/interfaces";
 const asyncTaskPublicOneAd = async () => {
   // GET ID OF AD FROM THE URL
   const pathname = window.location.pathname;
-  const index = pathname.split("/")[2];
+  const index = pathname.split("/")[4];
+  if (!index) {
+    return;
+  }
   // GET DATA OF AD FROM THE SERVER
   const response = await asyncHandlerRequestGetOneAd('/api/v1/ads/index/', index);
   if (!response){

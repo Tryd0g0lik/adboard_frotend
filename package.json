@@ -26,7 +26,7 @@
     "build:common": "webpack --mode=development --config webpack.config.common.js",
     "build:adboard": "webpack --mode=development --config webpack.config.adboard.js",
     "build:weather": "webpack --mode=development --config webpack.config.weather.js",
-    "build": "npm run build:common && npm run build:ads && npm run build:adboard && npm run build:weather",
+    "build": "npm run build:common && npm run build:ads && npm run build:adboard",
     "prepare": "husky"
   },
   "devDependencies": {

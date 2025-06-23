@@ -107,7 +107,7 @@ module.exports = {
       "@ADS": path.resolve(__dirname, "src/ads"),
       "@ADS-handlers": path.resolve(__dirname, "src/ads/scripts/handlers"),
       "@ENV": path.resolve(__dirname, "dotenv__.ts"),
-      // "@Interfaces": path.resolve(__dirname, "src/interfaces.ts"),
+      "@Interfaces": path.resolve(__dirname, "src/intarfeces.ts"),
     }
   },
 

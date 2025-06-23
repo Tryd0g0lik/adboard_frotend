@@ -32,7 +32,7 @@ module.exports = merge(webpackConfig, {
   },
 
   output: {
-    path: path.resolve(__dirname, '../static/ads'),
+    path: path.resolve(__dirname, '../static'),
     filename: 'scripts/main-[id]-[fullhash].js',
     publicPath: '/',
     clean: true,

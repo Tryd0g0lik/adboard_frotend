@@ -39,9 +39,7 @@ module.exports = merge(webpackConfig, {
 
 
   },
-  optimization: {
-    runtimeChunk: 'single',
-  },
+
   module: {
     rules: [
       {

@@ -40,7 +40,7 @@ export async function asyncHandlerOneAdPublic(event: MouseEvent): Promise<void>{
     console.warn("The index's data of Ad is invalid!");
     return;
   }
-  window.location.href = `${URL_HOST_FOR_API}/ad/${data}/`;
+  window.location.href = `${URL_HOST_FOR_API}/user/ads/ad/${data}/`;
 
 }
 

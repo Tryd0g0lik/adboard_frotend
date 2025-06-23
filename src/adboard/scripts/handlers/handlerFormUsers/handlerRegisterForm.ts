@@ -1,15 +1,12 @@
 /**
- * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
+ * src\adboard\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
  */
 import { setSessionIdInCookie } from "src/adboard/scripts/services/cookies/setCookies";
 import getErrorContent from "src/adboard/scripts/services/taskGetErrorContent";
 import { validateMaxLength, validateMinLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
 import { URL_HOST_FOR_API } from "@ENV";
-/**
- * src\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
- */
-// import { URL_HOST_FOR_API } from "@ENV";
+
 
 /***
  * Function that handle user's forms. It is the registration form and login form.
@@ -36,8 +33,8 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   body_.method = "POST";
   body_.body = form as FormData;
   // CHECK VALIDITY USERNAME
-  const title = form.get('username');
-  const regexUsername = /(^[a-zA-Z][a-zA-Z_]{2,30}$|^$)/;
+  const title = (form.get('username') as string).trim();
+  const regexUsername = /(^[a-zA-Z][a-zA-Z_0-9]{2,29}$|^$)/;
   const regexEmail = /(^[a-zA-Z0-9]{3,50}@{1}[a-zA-Z]{2,30}\.[a-zA-Z]{2,5}$|^$)/;
   (currentTarget as HTMLElement).querySelector(".invalid")?.remove();
   try {
@@ -53,10 +50,11 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     getErrorContent(fieldHTML as HTMLElement, err as Error);
     return;
   }
-  if (form.get('email') || (typeof form.get('email')).includes("string") && (form.get('email') as string).length == 0) {
+  const email = form.get('email')
+  if (email && (email as string).includes("@") || (typeof form.get('email')).includes("string") && (form.get('email') as string).length == 0) {
     try {
       // VALIDATE EMAIL
-      const email = form.get('email');
+      const email = (form.get('email') as string).trim();
       await Promise.all([
         validateMinLength(email as string, 3),
         validateMaxLength(email as string, 50),
@@ -71,8 +69,9 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
   };
 
   // CHECK VALIDITY PASSWORD
-  const password = form.get('password');
-  const regexPassword = /(^[a-zA-Z%0-9}{_%]{2,30}$|^$)/;
+  const password = ((form.get('password') as string) as string);
+  const regexPassword = /(^[a-zA-Z%0-9{_%]{2,29}$|^$)/;
+  const confirmPassword = ((form.get('confirm_password') as string) as string);
 
   try {
     // VALIDATE TITLE AD
@@ -87,10 +86,9 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     getErrorContent(fieldHTML as HTMLElement, err as Error);
     return;
   }
-  if (form.get('confirm_password') || (typeof form.get('confirm_password')).includes("string") && (form.get('confirm_password') as string).length == 0) {
-    // CHECK VALIDITY CONFIRM PASSWORD
-    const confirmPassword = form.get('confirm_password');
-    if (confirmPassword !== password) {
+  if (confirmPassword || (typeof form.get('confirm_password')).includes("string") && (form.get('confirm_password') as string).length == 0) {
+    // CHECK VALIDITY CONFIRM PASSWORD ;
+    if (confirmPassword.trim() !== password.trim()) {
       const fieldHTML = ((currentTarget as HTMLElement).querySelector('input[name="confirm_password"]')) as HTMLElement;
       const err = new Error("err: Check the passwords.");
       getErrorContent(fieldHTML as HTMLElement, err as Error);
@@ -98,8 +96,6 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     }
   }
 
-  // LOGIN OR REGISTER USER
-  // const pathnemr = (pathname.includes("login")) ? '/api/v2/users/login_user/' : "/api/v2/users/";
   // REGISTER USER
   const templeteApi = (pathname.includes("login")) ? "/api/v1/users/index/0/login_user/" : '/api/v1/users/index/';
   // REGISTER USER
@@ -110,26 +106,33 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
       console.warn(`User form invalid: ${response.statusText}`);
       return;
     }
-    const data = await response.json();
+    const data = await response.json(); 
     // CHANGE LOCATION
     if (pathname.includes("register")) {
       setTimeout(() => window.location.pathname = "/users/login/", 200);
     } else {
+      type Data = { string: string | number }[];
       Array.from(
-        data["data"] as Record<string, string | number>[]
+        data["data"] as Data
       ).forEach(elementtoken => {
         // console.log(`data ${elementtoken}: `, data[elementtoken]);
         if (Object.keys(elementtoken).includes("token_access")) {
           const k = "token_access";
           const v = Object(elementtoken)[k] as string;
-          const liveTime = Object(elementtoken)[k] as string;
-          setSessionIdInCookie(k, v, liveTime);
+          const keyLifeTime = Object.keys(elementtoken)[1];
+          const liveTime = Math.round(
+            parseFloat(Object(elementtoken)[keyLifeTime])
+          );
+          setSessionIdInCookie(k, v, String(liveTime));
         } else {
           const k = "token_refresh";
           const v: string = Object(elementtoken)[k] as string;
-          const liveTime: string = Object(elementtoken)[k] as string;
-          setSessionIdInCookie(k, v, liveTime);
-          window.location.pathname = "/weather/";
+          const keyLifeTime = Object.keys(elementtoken)[1];
+          const liveTime = Math.round(
+            Object(elementtoken)[keyLifeTime]
+          );
+          setSessionIdInCookie(k, v, String(liveTime));
+          window.location.pathname = "/";
         }
       });
     }

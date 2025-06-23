@@ -1,5 +1,5 @@
 /**
- * src\scripts\services\taskGetErrorContent.ts
+ * src\adboard\scripts\services\taskGetErrorContent.ts
  */
 
 /**

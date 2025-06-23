@@ -74,12 +74,20 @@ div.hidden {
 .form {
   display: flex;
   justify-content: flex-start;
+  span{
+    display: block;
+    font-size: 12px;
+    color: var(--info);
+  }
+  label{
+    margin: 0;
+  }
 }
 
-.form>.mb-3:first-child,
+/*.form>.mb-3:first-child,
 .form>.mb-3:nth-child(2) {
   width: 280px;
-}
+} */
 
 .ads-form,
 #form-register,
@@ -89,13 +97,36 @@ div.hidden {
   display: block;
 }
 
-.form .ads-form,
+
 #form-register,
 #form-login {
   width: 250px;
 }
 
+.ads-collections-list{
+  .ad-view{
+    padding-bottom: 15px;
+  }
+}
+
 /* ---- PUBLICK COLLECTION ADS ----*/
+.form{
+  flex-wrap: wrap;
+}
+#form-ads {
+  max-width: 650px;
+  >div{
+    width: 100%;
+  }
+input[name="title"]{
+  width: 100%;
+  max-width: 320px;
+}
+input[type="file"]{
+  max-width: 320px;
+}
+
+}
 .ad-view {
   div.ad-view {
     overflow: hidden;
@@ -141,25 +172,28 @@ div.hidden {
   }
 
 }
-
+.ads-form__full-image-file,
+.img-ads{
+  display: none;
+}
 
 /* ---- PAGE OF ONE AD ----*/
 #ad-page-container {
-  height: clamp(100px, 47vh, 500px);
+  height: 100%;
+  max-height: 500px;
 
-
-  // width: clamp(250px, 280px, 660px);
-
-
-
-
-  .ad-view-title {
-    max-width: 200px;
+  .ad-view{
+    padding: 0 15px 15px;
   }
-
+  
   .ad-view-container {
     max-height: none;
     flex-wrap: wrap;
+    flex-direction: column;
+
+    .ad-view-title {
+        max-width: inherit;
+      }
 
     >.ad-view-content {
       text-align: left;
@@ -178,6 +212,10 @@ div.hidden {
     font-size: clamp(18px, 2rem, 2.5rem);
   }
 }
+
+
+
+
 
 @media all and (max-width: 400px){
   .ad-view .ad-view-container{
