@@ -104,8 +104,16 @@ div.hidden {
 }
 
 .ads-collections-list{
+  position: relative;
   .ad-view{
     padding-bottom: 15px;
+  }
+  #remove-all{
+    position: none;
+    width: 100%;
+    max-width: 85px;
+    min-height: 25px;
+    max-height: 25px;
   }
 }
 
@@ -205,12 +213,17 @@ input[type="file"]{
       display: block;
       min-width: 280px;
       width: 100%;
+      
+    }
+    >div.ad-view-container-checkbox {
+      display: none;
     }
   }
 
   h2 {
     font-size: clamp(18px, 2rem, 2.5rem);
   }
+    
 }
 
 
