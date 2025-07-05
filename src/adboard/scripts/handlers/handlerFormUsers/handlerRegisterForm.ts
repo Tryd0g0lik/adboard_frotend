@@ -1,11 +1,11 @@
 /**
  * src\adboard\scripts\handlers\handlerFormUsers\handlerRegisterForm.ts
  */
-import { setSessionIdInCookie } from "src/adboard/scripts/services/cookies/setCookies";
 import getErrorContent from "src/adboard/scripts/services/taskGetErrorContent";
 import { validateMaxLength, validateMinLength } from "src/scripts/validators/validateLength";
 import { validateRegex } from "src/scripts/validators/validateRegex";
 import { URL_HOST_FOR_API } from "@ENV";
+import { setSessionIdInCookie } from "src/scripts/cookies/setCookies";
 
 // import { URL_HOST_FOR_API } from "@ENV";
 
@@ -50,8 +50,8 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     const fieldHTML = ((currentTarget as HTMLElement).querySelector('input[name="username"]')) as HTMLElement;
     getErrorContent(fieldHTML as HTMLElement, err as Error);
     return;
-  }
-  const email = form.get('email')
+  };
+  const email = form.get('email');
   if (email && (email as string).includes("@") || (typeof form.get('email')).includes("string") && (form.get('email') as string).length == 0) {
     try {
       // VALIDATE EMAIL
@@ -97,8 +97,6 @@ export async function handlerUserForm(event:KeyboardEvent): Promise<void> {
     }
   }
 
-  // LOGIN OR REGISTER USER
-  // const pathnemr = (pathname.includes("login")) ? '/api/v2/users/login_user/' : "/api/v2/users/";
   // REGISTER USER
   const templeteApi = (pathname.includes("login")) ? "/api/v1/users/index/0/login_user/" : '/api/v1/users/index/';
   // REGISTER USER

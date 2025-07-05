@@ -17,3 +17,4 @@ This a frontend (part) of project.
  - git.
 
 **Note**: The feature of the project is what, that React was not used.
+'src\adboard\scripts\services\cookies' will remove

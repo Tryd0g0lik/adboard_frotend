@@ -1,17 +1,9 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-// const Dotenv = require('dotenv-webpack');
 const BundleTracker = require('webpack-bundle-tracker');
-// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-// const ESLintPlugin = require('eslint-webpack-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const TerserPlugin = require('terser-webpack-plugin');
 const webpackConfig = require("./webpack.config.js");
 const merge = require("merge");
-// const CopyPlugin = require("copy-webpack-plugin");
-// const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 
 module.exports = merge(webpackConfig, {
   entry:

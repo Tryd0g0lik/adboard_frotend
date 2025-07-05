@@ -21,7 +21,7 @@ const teskInsertOneAd = (instance: HTMLElement, content: AdLine): void => {
   const checkBoxContainerHTML = viewContentHTml.cloneNode(true);
   (checkBoxContainerHTML as HTMLElement).className = 'ad-view-container-checkbox';
   const checkBox = document.createElement('input');
-  checkBox.setAttribute('data-ad', `${(content as AdLine).id}`)
+  checkBox.setAttribute('data-ad', `${(content as AdLine).id}`);
   checkBox.type = 'checkbox';
   checkBox.name = 'remove';
   (checkBoxContainerHTML as HTMLElement).append(checkBox);

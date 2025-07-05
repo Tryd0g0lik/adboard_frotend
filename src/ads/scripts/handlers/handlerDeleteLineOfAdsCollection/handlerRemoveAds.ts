@@ -1,4 +1,20 @@
-import taskAddButton from "../../services/taskAddButton";
+import taskAddButton from "../../services/tasksRemoveAds/taskAddButton";
+
+let ButtonTimeOut: NodeJS.Timeout;
+
+/**
+ * When user clicks by checkbox, the button for removing an would be published
+ * @param event 
+ */
+function handlerAddButtonRemoveAds(event: MouseEvent) {
+  if (event.target instanceof HTMLInputElement && (event.target as HTMLInputElement).name === "remove") {
+    if (ButtonTimeOut) {
+      clearTimeout(ButtonTimeOut);
+    }
+    const buttonHtmlItem = document.createElement('button');
+    ButtonTimeOut = setTimeout(() => taskAddButton(buttonHtmlItem), 500);
+  };
+};
 
 export function handlerPressCheckboxRemoveAds() {
   try{
@@ -13,15 +29,5 @@ export function handlerPressCheckboxRemoveAds() {
     throw new Error(`Error on the handlerPressCheckboxRemoveAds: ${error}`);
   } 
   
-}
-
-let ButtonTimeOut: NodeJS.Timeout
-function handlerAddButtonRemoveAds(event: MouseEvent) {
-  if (event.target instanceof HTMLInputElement && (event.target as HTMLInputElement).name === "remove") {
-    if (ButtonTimeOut) {
-      clearTimeout(ButtonTimeOut);
-    }
-    ButtonTimeOut = setTimeout(taskAddButton, 500);
-  };
 }
 
