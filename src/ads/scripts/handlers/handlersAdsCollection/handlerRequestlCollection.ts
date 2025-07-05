@@ -3,6 +3,7 @@
  * */
 import { URL_HOST_FOR_API } from "@ENV";
 import type { AdLinesCollection } from "src/ads/interfaces";
+import { handlerPressCheckboxRemoveAds } from "../handlerDeleteLineOfAdsCollection/handlerRemoveAds";
 
 /**
  * This function is download the collection of the ads from server.
@@ -24,6 +25,7 @@ export async function asyncHandlerGetAdsCollection(): Promise<{ data: AdLinesCol
     // RESEIVING RESPONSE DATA IN JSON TYPE
     const responseData = await response.json() as string; 
     const data = JSON.parse(responseData) as { data: AdLinesCollection };
+    handlerPressCheckboxRemoveAds();
     return data;
   }catch (err){
     console.log(`Error: ${(err as Error).message}`);

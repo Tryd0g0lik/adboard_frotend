@@ -1,5 +1,5 @@
 /**
- * src\services\cookieServise.ts
+ * src\scripts\cookies\getCookie.ts
  * Here is the class of Cookie and methods of the set new sessionId and to get the sessionId
  *
  * `https://github.com/js-cookie/js-cookie/` module is an alternative for a code below.

@@ -12,4 +12,4 @@ export const taskChangeIdDOM = () => {
     return;
   };
   sectionHtml.id = "form-ads";
-}
+};

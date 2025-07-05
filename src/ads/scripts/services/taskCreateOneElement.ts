@@ -17,6 +17,15 @@ const teskInsertOneAd = (instance: HTMLElement, content: AdLine): void => {
   // CREATE CONTENT CONTAINER
   const viewContentHTml = document.createElement('div');
   viewContentHTml.className = 'ad-view-container';
+  // CREATE CHECKBOX
+  const checkBoxContainerHTML = viewContentHTml.cloneNode(true);
+  (checkBoxContainerHTML as HTMLElement).className = 'ad-view-container-checkbox';
+  const checkBox = document.createElement('input');
+  checkBox.setAttribute('data-ad', `${(content as AdLine).id}`);
+  checkBox.type = 'checkbox';
+  checkBox.name = 'remove';
+  (checkBoxContainerHTML as HTMLElement).append(checkBox);
+
   // CREATE TITLE
   const titleAdHtml = document.createElement('div');
   titleAdHtml.className = 'ad-view-title';
@@ -39,6 +48,7 @@ const teskInsertOneAd = (instance: HTMLElement, content: AdLine): void => {
   viewFooterHtml.append(button);
 
   // ASSEMBLE ALL PARTS
+  viewContentHTml.append(checkBoxContainerHTML);
   viewContentHTml.append(titleAdHtml);
   viewContentHTml.append(contextAdHtml);
   viewContentHTml.append(viewFooterHtml);

@@ -1,5 +1,5 @@
 /***
- * src\adboard\scripts\services\cookies\setCookies.ts
+ * src\scripts\cookies\setCookies.ts
  */
 
 /**

@@ -8,8 +8,6 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-// const CopyPlugin = require("copy-webpack-plugin");
-// const ChunksWebpackPlugin = require('chunks-webpack-plugin');
 
 module.exports = {
   mode: 'none',
